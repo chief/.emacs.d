@@ -11,6 +11,6 @@
               (")" .  paredit-close-parenthesis)
               ("C-M-f" . paredit-forward)
               ("C-M-b" . paredit-backward))
-  :config
+  :init
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
 
