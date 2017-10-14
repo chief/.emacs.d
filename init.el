@@ -54,7 +54,7 @@
     rainbow-mode smart-mode-line beacon rainbow-delimiters
 
     ;; misc
-    diminish exec-path-from-shell symon
+    exec-path-from-shell symon
 
     ;; for auto-complete
     company popup
