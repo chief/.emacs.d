@@ -78,8 +78,6 @@
     ;; javascript
     json-mode js2-mode
 
-    ;; ruby
-    ruby-mode inf-ruby rbenv robe rspec-mode rubocop ruby-tools
 
     ;; racket
     geiser
@@ -636,59 +634,6 @@ comint-replace-by-expanded-history-before-point."
 ;; (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 ;; (add-to-list 'auto-mode-alist '("Appraisals\\'" . ruby-mode))
 
-(use-package ruby-mode
-  :mode (("\\.rake\\'" . ruby-mode)
-         ("Rakefile\\'" . ruby-mode)
-         ("\\.gemspec\\'" . ruby-mode)
-         ("\\.ru\\'" . ruby-mode)
-         ("Gemfile\\'" . ruby-mode)
-         ("Guardfile\\'" . ruby-mode)
-         ("Capfile\\'" . ruby-mode)
-         ("\\.cap\\'" . ruby-mode))
-  :config
-  (progn
-    (inf-ruby-minor-mode +1)
-    (setq ruby-insert-encoding-magic-comment nil)))
-
-(use-package ruby-tools
-  :init
-  (add-hook 'ruby-mode-hook 'ruby-tools-mode)
-  :diminish "")
-
-(use-package rbenv
-  :defer 25
-  :init
-  ;; I don't really care about the active Ruby in the modeline
-  (progn
-    (setq rbenv-show-active-ruby-in-modeline nil)
-    (global-rbenv-mode t)))
-
-(defadvice inf-ruby-console-auto (before activate-rbenv-for-robe activate)
-  (rbenv-use-corresponding))
-
-(use-package rspec-mode
-  :defer 20
-  :diminish rspec-mode
-  :commands rspec-mode)
-
-(defadvice rspec-compile (around rspec-compile-around)
-  "Use BASH shell for running the specs because of ZSH issues."
-  (let ((shell-file-name "/bin/bash"))
-    ad-do-it))
-
-(ad-activate 'rspec-compile)
-
-(use-package inf-ruby
-  :init
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup))
-
-(use-package robe
-  :init
-  (add-hook 'ruby-mode-hook 'robe-mode)
-  :diminish ""
-  :config
-  (eval-after-load 'company
-    '(push 'company-robe company-backends)))
 
 ;; Javascript
 ;; ----------
