@@ -10,5 +10,7 @@
               ("C-)" . paredit-forward-slurp-sexp)
               (")" .  paredit-close-parenthesis)
               ("C-M-f" . paredit-forward)
-              ("C-M-b" . paredit-backward)))
+              ("C-M-b" . paredit-backward))
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
 
