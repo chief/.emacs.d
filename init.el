@@ -115,12 +115,6 @@
 
     ;; docker
     dockerfile-mode
-
-    ;; Monokai theme
-    monokai-theme
-
-    ;; A Collection of Ridiculously Useful eXtensions for Emacs
-    crux
     ))
 
 (defvar packages-refreshed? nil)
@@ -279,8 +273,6 @@
 ;; turn on auto-fill mode in text buffers
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-(use-package crux)
-
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -427,7 +419,7 @@ When using Homebrew, install it using \"brew install trash\"."
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
  '(package-selected-packages
    (quote
-    (which-key crux monokai-theme dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
+    (which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
 
 (defun my/shell-kill-buffer-sentinel (process event)
   (when (memq (process-status process) '(exit signal))
@@ -468,7 +460,6 @@ comint-replace-by-expanded-history-before-point."
                                         (indent-according-to-mode)))
 
 (global-set-key (kbd "C-w") 'kill-whole-line)
-(global-set-key [remap kill-whole-line] 'crux-kill-whole-line)
 
 ;; A quick major mode help with discover-my-major
 (define-key 'help-command (kbd "C-m") 'discover-my-major)
@@ -483,17 +474,12 @@ comint-replace-by-expanded-history-before-point."
 ;; replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key [(shift return)] 'crux-smart-open-line)
-(global-set-key [(control shift return)] 'crux-smart-open-line-above)
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
-(global-set-key (kbd "C-c f")  'crux-recentf-ido-find-file)
-(global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
-(global-set-key (kbd "C-c k") 'crux-kill-other-buffers)
 (global-set-key (kbd "C-c i") 'imenu-anywhere)
 ;; make some use of the Super key
 (global-set-key (kbd "s-g") 'god-local-mode)
-(global-set-key (kbd "s-r") 'crux-recentf-ido-find-file)
+;; (global-set-key (kbd "s-r") 'crux-recentf-ido-find-file)
 
 
 ;; Docker mode
