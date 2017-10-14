@@ -461,10 +461,6 @@ comint-replace-by-expanded-history-before-point."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 
-;; replace zap-to-char functionality with the more powerful zop-to-char
-(global-set-key (kbd "M-z") 'zop-up-to-char)
-(global-set-key (kbd "M-Z") 'zop-to-char)
-
 ;; kill lines backward
 (global-set-key (kbd "C-<backspace>") (lambda ()
                                         (interactive)
