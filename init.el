@@ -505,16 +505,6 @@ comint-replace-by-expanded-history-before-point."
   :diminish ""
   :init (add-hook 'prog-mode-hook #'my/enable-flyspell-prog-mode))
 
-;; Saveplace
-;; ---------
-
-;; navigates to where you left off
-(use-package saveplace
-  :defer t
-  :init
-  (setq-default save-place t)
-  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
-
 ;; whitespace mode
 (setq whitespace-style '(tabs newline space-mark
                               tab-mark newline-mark
