@@ -20,13 +20,6 @@
 
 (require 'cl-lib)
 
-;; save recent files
-(require 'recentf)
-(recentf-mode t)
-(setq recentf-max-menu-items 100)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
-(recentf-mode t)
-
 ;; use shift + arrow keys to switch between visible buffers
 (require 'windmove)
 (windmove-default-keybindings)
