@@ -20,10 +20,6 @@
 
 (require 'cl-lib)
 
-;; use shift + arrow keys to switch between visible buffers
-(require 'windmove)
-(windmove-default-keybindings)
-
 ;; highlight the current line
 (global-hl-line-mode t)
 
