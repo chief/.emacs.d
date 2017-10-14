@@ -589,21 +589,6 @@ comint-replace-by-expanded-history-before-point."
 ;; Elisp
 ;; -----
 
-(defun my/turn-on-paredit-and-eldoc ()
-  (interactive)
-  (paredit-mode 1)
-  (eldoc-mode 1))
-
-(add-hook 'emacs-lisp-mode-hook #'my/turn-on-paredit-and-eldoc)
-(add-hook 'ielm-mode-hook #'my/turn-on-paredit-and-eldoc)
-
-(use-package eldoc
-  :diminish eldoc-mode
-  :config
-  (setq eldoc-idle-deplay 0.3)
-  (set-face-attribute 'eldoc-highlight-function-argument nil
-                      :underline t :foreground "green"
-                      :weight 'bold))
 
 ;; change the faces for elisp regex grouping
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
@@ -618,10 +603,6 @@ comint-replace-by-expanded-history-before-point."
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm-other-window)
 (define-key lisp-interaction-mode-map (kbd "C-c C-z") 'ielm-other-window)
-
-(use-package elisp-slime-nav
-  :diminish elisp-slime-nav-mode
-  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
 ;; pretty print results
 (bind-key "M-:" 'pp-eval-expression)
