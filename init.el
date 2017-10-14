@@ -280,14 +280,6 @@
 ;; be quiet about reverting files
 (setq auto-revert-verbose nil)
 
-;; start server if not running but only for gui
-(require 'server nil t)
-(use-package server
-  :if window-system
-  :init
-  (when (not (server-running-p server-name))
-    (server-start)))
-
 ;; GUI-specific
 (when (window-system)
   (setenv "EMACS_GUI" "t"))
