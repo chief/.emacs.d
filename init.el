@@ -40,7 +40,7 @@
     better-defaults
 
     ;; themeing
-    rainbow-mode smart-mode-line beacon rainbow-delimiters
+    rainbow-mode  beacon rainbow-delimiters
 
     ;; misc
     exec-path-from-shell symon
@@ -626,14 +626,6 @@ comint-replace-by-expanded-history-before-point."
 ;; modeline
 ;; --------
 
-(use-package smart-mode-line
-  :init
-  (progn
-    (setq sml/theme 'respectful)
-    (sml/setup))
-  :config
-  (setq sml/shorten-directory t
-        sml/shorten-modes t))
 
 ;; fringe
 ;; ------
