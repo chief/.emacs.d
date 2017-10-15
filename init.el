@@ -495,15 +495,6 @@ comint-replace-by-expanded-history-before-point."
 ;; remove some backends form vc-mode
 (setq vc-handled-backends '())
 
-;; highlight FIXME and TODO
-(defun my/add-watchwords ()
-  "Highlight FIXME, TODO, and NOCOMMIT in code TODO"
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIXME:?\\|TODO:?\\)\\>"
-          1 '((:foreground "#d7a3ad") (:weight bold)) t))))
-
-(add-hook 'prog-mode-hook #'my/add-watchwords)
-
 ;; highlight lines
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
