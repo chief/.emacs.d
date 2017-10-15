@@ -36,9 +36,6 @@
     ;; package management
     use-package
 
-    ;; I guess this is useful
-    better-defaults
-
     ;; themeing
     rainbow-mode  beacon rainbow-delimiters
 
@@ -113,8 +110,14 @@
 
 ;; Load use-package, used for loading packages everywhere else
 (require 'use-package)
+
 ;; Set to t to debug package loading or nil to disable
 (setq use-package-verbose t)
+
+;;; better-defaults --- A small number of better defaults for Emacs
+;;; https://github.com/technomancy/better-defaults
+(use-package better-defaults
+  :ensure t)
 
 ;; Setting up $PATH and other vars
 (use-package exec-path-from-shell
@@ -174,16 +177,10 @@
 (setq-default indicate-buffer-boundaries nil)
 
 ;; Turn off all kinds of modes, I don't need the menu bar, or the tool bar:
-(when (functionp 'menu-bar-mode)
-  (menu-bar-mode -1))
-(when (functionp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode 'nil))
 (when (functionp 'mouse-wheel-mode)
   (mouse-wheel-mode -1))
 (when (functionp 'tooltip-mode)
   (tooltip-mode -1))
-(when (functionp 'tool-bar-mode)
-  (tool-bar-mode -1))
 (when (functionp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
@@ -216,7 +213,6 @@
 (setq make-pointer-invisible t)
 
 (setq-default default-tab-width 2)
-(setq-default indent-tabs-mode nil)
 
 ;; fix some weird color escape sequences
 (setq system-uses-terminfo nil)
@@ -224,12 +220,6 @@
 ;; resolve symlinks
 (setq-default find-file-visit-truename t)
 
-;; require newline at the end of files
-(setq require-final-newline t)
-
-;; search (and search/replace) using regex by default
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
 ;; single space ends a sentence
@@ -432,8 +422,6 @@ comint-replace-by-expanded-history-before-point."
 
 (define-key 'help-command (kbd "C-i") 'info-display-manual)
 
-;; replace buffer-menu with ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
@@ -680,7 +668,6 @@ comint-replace-by-expanded-history-before-point."
 (setq electric-pair-preserve-balance t
       electric-pair-delete-adjacent-pairs t
       electric-pair-open-newline-between-pairs nil)
-(show-paren-mode 1)
 
 ;; Auto-indentation
 (electric-indent-mode 1)
@@ -1065,8 +1052,6 @@ Deletes whitespace at join."
                   (interactive)
                   (join-line -1)))
 
-;; Completion that uses many different methods to find options.
-(global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
