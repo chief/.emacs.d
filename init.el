@@ -78,10 +78,6 @@
     ;; javascript
     json-mode js2-mode
 
-
-    ;; racket
-    geiser
-
     ;; elasticsearch
     es-mode
 
