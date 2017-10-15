@@ -92,7 +92,7 @@
     helm helm-projectile helm-ag helm-swoop helm-flx helm-flycheck
 
     ;; git
-    magit git-gutter git-timemachine with-editor
+    git-timemachine with-editor
 
     ;; eshell
     eshell-prompt-extras
@@ -219,8 +219,6 @@
 ;; hide mouse while typing
 (setq make-pointer-invisible t)
 
-;; set fill-columnd to 80 chars and tab width to 2
-(setq-default fill-column 80)
 (setq-default default-tab-width 2)
 (setq-default indent-tabs-mode nil)
 
@@ -392,10 +390,10 @@ When using Homebrew, install it using \"brew install trash\"."
  '(comint-scroll-to-bottom-on-input t)
  '(custom-safe-themes
    (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+    ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
  '(package-selected-packages
    (quote
-    (which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
+    (all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
 
 (defun my/shell-kill-buffer-sentinel (process event)
   (when (memq (process-status process) '(exit signal))
@@ -590,9 +588,6 @@ comint-replace-by-expanded-history-before-point."
 ;; --------
 
 (defun my/web-mode-hook ()
-  ;; Disable fill column indicator mode due to a bug.
-  ;; See: https://github.com/alpaker/Fill-Column-Indicator/issues/46
-  (turn-off-fci-mode)
   ;; HTML offset indentation
   (setq web-mode-markup-indent-offset 2)
   ;; CSS offset indentation
@@ -665,11 +660,6 @@ comint-replace-by-expanded-history-before-point."
 
 (setq ns-use-srgb-colorspace t)
 
-(use-package monokai-theme
-  :init
-  (load-theme 'monokai 't 't)
-  (enable-theme 'monokai))
-
 ;; Fonts
 ;; -----
 
@@ -733,12 +723,7 @@ comint-replace-by-expanded-history-before-point."
      ;; Always split nicely for wide screens
      ediff-split-window-function 'split-window-horizontally)))
 
-;; fill-column-indicator
-;; ---------------------
 
-(use-package fill-column-indicator
-  :init
-  (add-hook 'prog-mode-hook #'fci-mode))
 
 ;; smooth-scrolling
 ;; ----------------
@@ -827,78 +812,7 @@ comint-replace-by-expanded-history-before-point."
     (add-hook 'shell-mode-hook 'with-editor-export-editor)
     (add-hook 'eshell-mode-hook 'with-editor-export-editor)))
 
-;; magit
-;; -----
 
-(use-package magit
-  :bind ("C-x g" . magit-status)
-  :init (add-hook 'magit-mode-hook 'hl-line-mode)
-  :config
-  (setenv "GIT_PAGER" "")
-  (if (file-exists-p  "/usr/local/bin/emacsclient")
-      (setq magit-emacsclient-executable "/usr/local/bin/emacsclient")
-    (setq magit-emacsclient-executable (executable-find "emacsclient"))))
-
-;; projectile
-;; ----------
-
-(use-package projectile
-  :defer 5
-  :commands projectile-global-mode
-  :diminish projectile-mode
-  :config
-  (bind-key "C-c p b" #'projectile-switch-to-buffer #'projectile-command-map)
-  (bind-key "C-c p K" #'projectile-kill-buffers #'projectile-command-map)
-
-  ;; global ignores
-  (add-to-list 'projectile-globally-ignored-files ".tern-port")
-  (add-to-list 'projectile-globally-ignored-files "GTAGS")
-  (add-to-list 'projectile-globally-ignored-files "GPATH")
-  (add-to-list 'projectile-globally-ignored-files "GRTAGS")
-  (add-to-list 'projectile-globally-ignored-files "GSYMS")
-  (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-  ;; always ignore .class files
-  (add-to-list 'projectile-globally-ignored-file-suffixes ".class")
-
-  (use-package helm-projectile
-    :init
-    (use-package grep) ;; required for helm-ag to work properly
-    (setq projectile-completion-system 'helm)
-    ;; no fuzziness for projectile-helm
-    (setq helm-projectile-fuzzy-match nil)
-    (helm-projectile-on))
-  (projectile-mode))
-
-;; git-gutter
-;; ----------
-
-(use-package git-gutter
-  :defer t
-  :bind (("C-x =" . git-gutter:popup-hunk)
-         ("C-x P" . git-gutter:previous-hunk)
-         ("C-c N" . git-gutter:next-hunk)
-         ("C-x p" . git-gutter:previous-hunk)
-         ("C-x n" . git-gutter:next-hunk)
-         ("C-c G" . git-gutter:popup-hunk))
-  :diminish ""
-  :init
-  (add-hook 'prog-mode-hook 'git-gutter-mode)
-  (add-hook 'org-mode-hook 'git-gutter-mode))
-
-;; anzu
-;; ----
-
-(use-package anzu
-  :defer t
-  :bind ("M-%" . anzu-query-replace-regexp)
-  :config
-  (progn
-    (use-package thingatpt)
-    (setq anzu-mode-lighter "")
-    (set-face-attribute 'anzu-mode-line nil :foreground "yellow")))
-
-(add-hook 'prog-mode-hook #'anzu-mode)
-(add-hook 'org-mode-hook #'anzu-mode)
 
 ;; helm-swoop
 ;; ----------
@@ -1093,14 +1007,6 @@ comint-replace-by-expanded-history-before-point."
         ido-use-filename-at-point 'guess
         ido-max-prospects 10))
 
-;; smex
-;; ----
-
-;; TODO maybe try helm someday?
-(use-package smex
-  :disabled t
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands)))
 
 ;; iedit
 ;; -----
