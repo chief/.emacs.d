@@ -49,9 +49,9 @@
     company popup
 
     ;; editing utilities
-    smex ag ido-completing-read+ smartparens smooth-scrolling flx-ido
-    golden-ratio fill-column-indicator anzu smart-tab smartparens
-    shrink-whitespace undo-tree iedit smartscan ido-vertical-mode vlf
+     ag   smooth-scrolling
+    golden-ratio fill-column-indicator anzu smart-tab
+    shrink-whitespace undo-tree iedit smartscan  vlf
     imenu-anywhere projectile
 
     ;; infrastructure
@@ -922,28 +922,6 @@ comint-replace-by-expanded-history-before-point."
 
 (use-package paren-face
   :init (global-paren-face-mode))
-
-;; ido-mode
-;; --------
-
-(use-package ido
-  :config
-  (use-package ido-completing-read+
-    :init (ido-ubiquitous-mode 1))
-  (use-package flx-ido
-    :init (flx-ido-mode 1)
-    :config (setq ido-use-faces nil))
-  (use-package ido-vertical-mode
-    :disabled t
-    :init (ido-vertical-mode t))
-  (setq ido-use-virtual-buffers nil
-        ;; this settings causes weird TRAMP connections, don't set it!
-        ;; ido-enable-tramp-completion nil
-        ido-enable-flex-matching t
-        ido-auto-merge-work-directories-length nil
-        ido-create-new-buffer 'always
-        ido-use-filename-at-point 'guess
-        ido-max-prospects 10))
 
 
 ;; iedit
