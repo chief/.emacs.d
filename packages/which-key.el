@@ -2,4 +2,5 @@
 ;;; Commentary: https://github.com/justbur/emacs-which-key
 (use-package which-key
   :ensure t
-  :commands which-key-mode)
+  :config
+  (which-key-mode))
