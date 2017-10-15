@@ -709,19 +709,6 @@ comint-replace-by-expanded-history-before-point."
 ;; Automatic layout
 (electric-layout-mode 1)
 
-;; smartparens
-;; -----------
-
-(use-package smartparens
-  :defer 5
-  :diminish smartparens-mode
-  :init
-  (sp-use-paredit-bindings)
-  (show-smartparens-global-mode t)
-  :config
-  (setq sp-base-key-bindings 'paredit)
-  (setq sp-autoskip-closing-pair 'always)
-  (setq sp-hybrid-kill-entire-symbol nil))
 
 ;; flycheck
 ;; --------
