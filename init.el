@@ -47,9 +47,9 @@
 
     ;; editing utilities
      ag   smooth-scrolling
-    golden-ratio fill-column-indicator anzu smart-tab
+    golden-ratio  anzu smart-tab
     shrink-whitespace undo-tree iedit smartscan  vlf
-    imenu-anywhere projectile
+    imenu-anywhere
 
     ;; infrastructure
     restclient
@@ -90,6 +90,7 @@
     ;; docker
     dockerfile-mode
     ))
+
 
 (defvar packages-refreshed? nil)
 
