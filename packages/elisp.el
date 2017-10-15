@@ -53,3 +53,8 @@
       (eval-region (min (point) (mark)) (max (point) (mark)))
     (pp-eval-last-sexp prefix)))
 
+;;; paren-face --- A face dedicated to lisp parentheses
+;;; https://github.com/tarsius/paren-face
+(use-package paren-face
+  :ensure t
+  :init (global-paren-face-mode))

@@ -70,7 +70,7 @@
     flycheck flycheck-tip flycheck-pos-tip
 
     ;; clojure
-    clojure-mode clojure-mode-extra-font-locking  paren-face ac-cider
+    clojure-mode clojure-mode-extra-font-locking  ac-cider
 
     ;; coffeescript
     coffee-mode
@@ -903,13 +903,6 @@ comint-replace-by-expanded-history-before-point."
   (progn
     (define-key undo-tree-map (kbd "C-x u") 'undo-tree-visualize)
     (define-key undo-tree-map (kbd "C-/") 'undo-tree-undo)))
-
-;; paren-face
-;; ----------
-
-(use-package paren-face
-  :init (global-paren-face-mode))
-
 
 ;; iedit
 ;; -----
