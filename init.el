@@ -287,15 +287,6 @@
               (push '("fn" . ?ƒ) prettify-symbols-alist)))
   (global-prettify-symbols-mode +1))
 
-;; display time and load on modeline
-(setq
- ;; don't display info about mail
- display-time-mail-function (lambda () nil)
- ;; update every 15 seconds (default is 60)
- display-time-interval 15
- display-time-format "%d-%m-%Y %R")
-(display-time-mode 1)
-
 ;; quit as fast as possible
 (defun mu/quit-emacs-unconditionally ()
   (interactive)
