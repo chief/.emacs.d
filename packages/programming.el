@@ -22,6 +22,8 @@
   (add-hook 'prog-mode-hook 'whitespace-mode))
 
 
+;;; git-gutter --- Emacs port of GitGutter which is Sublime Text Plugin
+;;; https://github.com/syohex/emacs-git-gutter
 (use-package git-gutter
   :ensure t
   :defer t
@@ -36,24 +38,22 @@
   (add-hook 'prog-mode-hook 'git-gutter-mode)
   (add-hook 'org-mode-hook 'git-gutter-mode))
 
+;;; anzu --- Emacs Port of anzu.vim
+;;; https://github.com/syohex/emacs-anzu
 (use-package anzu
   :ensure t
   :defer t
   :bind ("M-%" . anzu-query-replace-regexp)
-  :config
-  (progn
-    (use-package thingatpt)
-    (setq anzu-mode-lighter "")
-    (set-face-attribute 'anzu-mode-line nil :foreground "yellow")))
+  :init
+  (add-hook 'prog-mode-hook 'anzu-mode)
+  (add-hook 'org-mode-hook 'anzu-mode))
 
-(add-hook 'prog-mode-hook #'anzu-mode)
-(add-hook 'org-mode-hook #'anzu-mode)
-
-
+;;; projectile --- Project Interaction Library for Emacs
+;;; https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
   :defer 5
-  :commands projectile-global-mode
+  :commands projectile-mode
   :diminish projectile-mode
   :config
   (bind-key "C-c p b" #'projectile-switch-to-buffer #'projectile-command-map)
@@ -69,15 +69,21 @@
   ;; always ignore .class files
   (add-to-list 'projectile-globally-ignored-file-suffixes ".class")
 
+  ;;; helm-projectile --- Helm UI for Projectile
+  ;;; https://github.com/bbatsov/helm-projectile
   (use-package helm-projectile
+    :ensure t
     :init
-    (use-package grep) ;; required for helm-ag to work properly
+    (use-package grep
+      :ensure t) ;; required for helm-ag to work properly
     (setq projectile-completion-system 'helm)
     ;; no fuzziness for projectile-helm
     (setq helm-projectile-fuzzy-match nil)
     (helm-projectile-on))
   (projectile-mode))
 
+;;; magit --- It's Magit! A Git porcelain inside Emacs
+;;; https://github.com/magit/magit
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
@@ -97,3 +103,4 @@
           1 '((:foreground "#d7a3ad") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook #'my/add-watchwords)
+
