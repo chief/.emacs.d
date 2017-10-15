@@ -488,28 +488,6 @@ comint-replace-by-expanded-history-before-point."
   :diminish ""
   :init (add-hook 'prog-mode-hook #'my/enable-flyspell-prog-mode))
 
-;; whitespace mode
-(setq whitespace-style '(tabs newline space-mark
-                              tab-mark newline-mark
-                              face lines-tail trailing))
-
-;; display pretty things for newlines and tabs
-(setq whitespace-display-mappings
-      ;; all numbers are Unicode codepoint in decimal. e.g. (insert-char 182 1)
-      ;; 32 SPACE, 183 MIDDLE DOT
-      '((space-mark nil)
-        ;; 10 LINE FEED
-        ;;(newline-mark 10 [172 10])
-        (newline-mark nil)
-        ;; 9 TAB, MIDDLE DOT
-        (tab-mark 9 [183 9] [92 9])))
-
-;; always turn on whitespace mode in programming buffers
-;; (add-hook 'prog-mode-hook #'whitespace-mode)
-;; (add-hook 'whitespace-mode-hook #'whitespace-mode)
-;; indicate trailing empty lines in the GUI
-(setq-default show-trailing-whitespace t)
-
 ;; *********************
 ;; Programming Languages
 ;; *********************

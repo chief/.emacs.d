@@ -7,6 +7,7 @@
         whitespace-style '(tabs newline space-mark
                                 tab-mark newline-mark
                                 face lines-tail trailing))
+  (setq-default show-trailing-whitespace t)
 
   ;; display pretty things for newlines and tabs
   (setq whitespace-display-mappings
