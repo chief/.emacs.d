@@ -81,9 +81,6 @@
     ;; markup language
     markdown-mode markdown-mode+ yaml-mode web-mode
 
-    ;; helm
-    helm helm-projectile helm-ag helm-swoop helm-flx helm-flycheck
-
     ;; git
     git-timemachine with-editor
 
@@ -289,6 +286,7 @@
         "openssl s_client -connect %h:%p -no_ssl2 -no_ssl3 -ign_eof"))
 
 (use-package helm-flx
+  :ensure t
   :init (helm-flx-mode +1))
 
 ;; OS-specific settings
@@ -701,6 +699,7 @@ comint-replace-by-expanded-history-before-point."
     (use-package flycheck-pos-tip
       :init (flycheck-pos-tip-mode))
     (use-package helm-flycheck
+      :ensure t
       :init (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))))
 
 ;; with-editor
@@ -718,6 +717,7 @@ comint-replace-by-expanded-history-before-point."
 ;; ----------
 
 (use-package helm-swoop
+  :ensure t
   :bind (("M-i" . helm-swoop)
          ("M-I" . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop))
@@ -737,6 +737,9 @@ comint-replace-by-expanded-history-before-point."
 
 ;; helm
 ;; ----
+
+(use-package helm
+  :ensure t)
 
 (use-package helm-config
   :demand t
