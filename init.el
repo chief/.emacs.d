@@ -607,28 +607,6 @@ comint-replace-by-expanded-history-before-point."
   :ensure t
   :mode "\\.es$")
 
-;; Ruby
-;; ----
-
-;; (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.cap\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
-;; (add-to-list 'auto-mode-alist '("Appraisals\\'" . ruby-mode))
-
 
 ;; Javascript
 ;; ----------
@@ -1187,33 +1165,6 @@ Deletes whitespace at join."
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-
-
-;; Next two functions are borrowed from emacs prelude.
-
-(defun my/smart-open-line-above ()
-  "Insert an empty line above the current line.
-Position the cursor at it's beginning, according to the current mode."
-  (interactive)
-  (move-beginning-of-line nil)
-  (newline-and-indent)
-  (forward-line -1)
-  (indent-according-to-mode))
-
-(defun my/smart-open-line (arg)
-  "Insert an empty line after the current line.
-Position the cursor at its beginning, according to the current mode.
-
-With a prefix ARG open line above the current line."
-  (interactive "P")
-  (if arg
-      (my/prelude-smart-open-line-above)
-    (progn
-      (move-end-of-line nil)
-      (newline-and-indent))))
-
-(global-set-key (kbd "s-o") 'my/smart-open-line-above)
-(global-set-key (kbd "M-o") 'my/smart-open-line)
 
 ;; **************
 ;; Finalize Setup
