@@ -240,13 +240,8 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; never kill the *scratch* buffer
-(defadvice kill-buffer (around kill-buffer-around-advice activate)
-  (let ((buffer-to-kill (ad-get-arg 0)))
-    (if (equal buffer-to-kill "*scratch*")
-        (bury-buffer)
-      ad-do-it)))
-
-;; version control stuff
+(with-current-buffer "*scratch*"
+  (emacs-lock-mode 'kill))
 
 ;; automatically revert file if changed on disk
 (global-auto-revert-mode 1)
