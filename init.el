@@ -220,8 +220,6 @@
 ;; resolve symlinks
 (setq-default find-file-visit-truename t)
 
-(global-set-key (kbd "M-%") 'query-replace-regexp)
-
 ;; single space ends a sentence
 (setq sentence-end-double-space nil)
 
@@ -240,9 +238,6 @@
 
 ;; turn on auto-fill mode in text buffers
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-;; enable y/n answers
-(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; never kill the *scratch* buffer
 (defadvice kill-buffer (around kill-buffer-around-advice activate)
