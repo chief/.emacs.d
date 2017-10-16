@@ -135,7 +135,7 @@
 (setq user-full-name "Giorgos Tsiftsis"
       user-mail-address "giorgos.tsiftsis@gmail.com")
 
-;; prefer UTF-8 everywhere
+;; prefer UTF-8 everywhere: language, terminal, keyboard, buffers
 (set-language-environment "UTF-8")
 
 (set-default-coding-systems 'utf-8)
@@ -145,7 +145,7 @@
 ;; turn on syntax highlighting for all buffers
 (global-font-lock-mode t)
 
-;; raise maximum number of logs
+;; raise maximum number of logs in *Messages*
 (setq message-log-max 16384)
 
 ;; configure the GC
@@ -166,14 +166,16 @@
 ;; delete selected region on typing
 (delete-selection-mode t)
 
+;; set large file warning to 26MB
 (setq large-file-warning-threshold (* 25 1024 1024))
 
 (transient-mark-mode 1)
 
 (setq-default indicate-empty-lines nil)
+
 (setq-default indicate-buffer-boundaries nil)
 
-;; Turn off all kinds of modes, I don't need the menu bar, or the tool bar:
+;; turn off all kinds of modes
 (when (functionp 'mouse-wheel-mode)
   (mouse-wheel-mode -1))
 (when (functionp 'tooltip-mode)
@@ -181,18 +183,21 @@
 (when (functionp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
-;; don't blink, please
+;; don't blink
 (when (functionp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
-;; don't beep and dont show startup message
+;; don't beep
 (setq ring-bell-function (lambda ()))
+
+;; don't show startup message
 (setq inhibit-startup-screen t
       initial-major-mode 'fundamental-mode)
 
-;; show line and column numbers in mode-line
-(line-number-mode 1)
-(column-number-mode 1)
+;; show line and column numbers in mode line
+(line-number-mode t)
+
+(column-number-mode t)
 
 ;; ignore case in file name completion
 (setq read-file-name-completion-ignore-case t)
