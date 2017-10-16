@@ -151,14 +151,12 @@
 ;; configure the GC
 (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
 
-;; Allow font-lock-mode to do background parsing
-(setq jit-lock-stealth-time 1
-      ;; jit-lock-stealth-load 200
-      jit-lock-chunk-size 1000
-      jit-lock-defer-time 0.05)
-
-;; toggle line number limit
-(setq line-number-display-limit-width 10000)
+;; set font-lock speed (https://www.emacswiki.org/emacs/FontLockSpeed)
+(setq font-lock-support-mode 'jit-lock-mode)
+(setq jit-lock-stealth-time 16
+      jit-lock-defer-contextually t
+      jit-lock-stealth-nice 0.5)
+(setq-default font-lock-multiline t)
 
 ;; make gnutls a bit safer
 (setq gnutls-min-prime-bits 4096)
