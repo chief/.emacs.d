@@ -244,7 +244,7 @@
   (emacs-lock-mode 'kill))
 
 ;; automatically revert file if changed on disk
-(global-auto-revert-mode 1)
+(global-auto-revert-mode t)
 
 ;; be quiet about reverting files
 (setq auto-revert-verbose nil)
