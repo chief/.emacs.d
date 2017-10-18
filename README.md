@@ -9,4 +9,4 @@
 - [ ] Examine `after` and nested declarations for `use-package`,
 [ref](https://github.com/jwiegley/use-package/issues/453)
 - [ ] Check warnings during installation
-- [ ] Use `better-defaults` and remove duplications
+- [x] ~~Use  better-defaults  and remove duplications~~
