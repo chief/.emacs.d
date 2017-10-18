@@ -14,3 +14,8 @@
 ;;; https://github.com/auto-complete/popup-el
 (use-package popup
   :ensure t)
+
+;;; golden-ration --- Automatic resizing of Emacs windows to the golden ratio
+;;; https://github.com/roman/golden-ratio.el
+(use-package golden-ratio
+  :ensure t)

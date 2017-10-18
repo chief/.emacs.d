@@ -149,3 +149,18 @@
                ("C-p" . company-select-previous)
                ("C-d" . company-show-doc-buffer)
                ("<tab>" . company-complete))))
+
+;;; git-timemachine --- Step through historic versions of git controlled file using everyone's favourite editor
+;;; https://github.com/pidu/git-timemachine
+(use-package git-timemachine
+  :ensure t)
+
+;;; with-editor --- Use the Emacsclient as the $EDITOR of child processes
+;;; https://github.com/magit/with-editor
+(use-package with-editor
+  :ensure t
+  :init
+  (progn
+    (add-hook 'shell-mode-hook 'with-editor-export-editor)
+    (add-hook 'eshell-mode-hook 'with-editor-export-editor)
+    (add-hook 'term-mode-hook 'with-editor-export-editor)))

@@ -39,29 +39,6 @@
     ;; misc
     exec-path-from-shell symon
 
-    ;; editing utilities
-    golden-ratio  anzu smart-tab
-    shrink-whitespace undo-tree iedit smartscan  vlf
-    imenu-anywhere
-
-    ;; infrastructure
-    restclient
-
-    ;; highlighting
-    idle-highlight-mode
-
-    ;; org-mode
-    org org-bullets
-
-    ;; buffer utils
-    dired+
-
-    ;; flycheck
-    flycheck flycheck-tip flycheck-pos-tip
-
-    ;; clojure
-    clojure-mode clojure-mode-extra-font-locking  ac-cider
-
     ;; coffeescript
     coffee-mode
 
@@ -73,9 +50,6 @@
 
     ;; markup language
     markdown-mode markdown-mode+ yaml-mode web-mode
-
-    ;; git
-    git-timemachine with-editor
 
     ;; eshell
     eshell-prompt-extras
@@ -250,13 +224,6 @@
               (push '("fn" . ?ƒ) prettify-symbols-alist)))
   (global-prettify-symbols-mode +1))
 
-;; quit as fast as possible
-(defun mu/quit-emacs-unconditionally ()
-  (interactive)
-  (my-quit-emacs '(4)))
-
-(define-key special-event-map (kbd "<sigusr1>") #'my/quit-emacs-unconditionally)
-
 (setq tls-program
       ;; Defaults:
       ;; '("gnutls-cli --insecure -p %p %h"
@@ -415,41 +382,6 @@ comint-replace-by-expanded-history-before-point."
 (use-package dockerfile-mode
   :mode (("Dockerfile\\'" . dockerfile-mode)))
 
-;; Spell check and flyspell settings
-;; ---------------------------------
-
-;; Standard location of personal dictionary
-(setq ispell-personal-dictionary "~/.flydict")
-
-;; Taken from dakrone who took it mostly from
-;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
-(when (executable-find "aspell")
-  (setq ispell-program-name (executable-find "aspell"))
-  (setq ispell-extra-args
-        (list "--sug-mode=fast" ;; ultra/fast/normal/bad-spellers
-              "--lang=en_GB" ;; TODO: can this be toggled for Greek?
-              "--ignore=4")))
-
-;; hunspell
-(when (executable-find "hunspell")
-  (setq ispell-program-name (executable-find "hunspell"))
-  (setq ispell-extra-args '("-d en_GB")))
-
-;; blindly copy-pasting here:
-(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))
-(add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
-(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
-(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE"))
-
-(defun my/enable-flyspell-prog-mode ()
-  (interactive)
-  (flyspell-prog-mode))
-
-(use-package flyspell
-  :defer t
-  :diminish ""
-  :init (add-hook 'prog-mode-hook #'my/enable-flyspell-prog-mode))
-
 ;; remove some backends form vc-mode
 (setq vc-handled-backends '())
 
@@ -594,13 +526,6 @@ comint-replace-by-expanded-history-before-point."
 
 (load-directory "./packages/")
 
-;; with-editor
-;; -----------
-(use-package with-editor
-  :init
-  (progn
-    (add-hook 'shell-mode-hook 'with-editor-export-editor)
-    (add-hook 'eshell-mode-hook 'with-editor-export-editor)))
 
 
 (when (eq system-type 'darwin)
@@ -630,27 +555,6 @@ comint-replace-by-expanded-history-before-point."
 ;; Automatic layout
 (electric-layout-mode 1)
 
-
-;; flycheck
-;; --------
-
-(use-package flycheck
-  :defer 5
-  :bind (("M-g M-n" . flycheck-next-error)
-         ("M-g M-p" . flycheck-previous-error)
-         ("M-g M-=" . flycheck-list-errors))
-  :init (global-flycheck-mode)
-  :diminish flycheck-mode
-  :config
-  (progn
-    (setq-default flycheck-disabled-checkers '(reek-ruby emacs-lisp-checkdoc))
-    (use-package flycheck-pos-tip
-      :init (flycheck-pos-tip-mode))
-    (use-package helm-flycheck
-      :ensure t
-      :init (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))))
-
-
 ;; markdown-mode
 ;; -------------
 
@@ -666,6 +570,7 @@ comint-replace-by-expanded-history-before-point."
 ;; smart-tab
 ;; ---------
 (use-package smart-tab
+  :ensure t
   :defer t
   :diminish ""
   :init (global-smart-tab-mode 1)
@@ -684,6 +589,7 @@ comint-replace-by-expanded-history-before-point."
 ;; undo-tree
 ;; ---------
 (use-package undo-tree
+  :ensure t
   :init (global-undo-tree-mode t)
   :defer t
   :diminish ""
@@ -696,19 +602,13 @@ comint-replace-by-expanded-history-before-point."
 (use-package iedit
   :bind ("C-;" . iedit-mode))
 
-;; Jump between the same variable in multiple places.
-(use-package smartscan
-  :init (add-hook #'prog-mode-hook #'smartscan-mode)
-  :config
-  (bind-key "M-'" #'other-window smartscan-map))
-
 ;; Show system monitor when Emacs is inactive
 (use-package symon
   :if window-system
   :init
   (setq symon-refresh-rate 2
-        symon-delay 5)
-  (symon-mode 1)
+        symon-delay 60)
+  (symon-mode t)
   :config
   (setq symon-sparkline-type 'bounded))
 

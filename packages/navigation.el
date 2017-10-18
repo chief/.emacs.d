@@ -20,3 +20,11 @@
 (use-package imenu-anywhere
   :ensure t
   :bind (("C-c i" . imenu-anywhere)))
+
+;; Jump between the same variable in multiple places.
+(use-package smartscan
+  :ensure t
+  :init (add-hook #'prog-mode-hook #'smartscan-mode)
+  :config
+  (bind-key "M-'" #'other-window smartscan-map))
+

@@ -31,6 +31,9 @@
 (use-package ag
   :ensure t)
 
+(use-package helm-ag
+  :ensure t)
+
 ;;; helm -- Emacs incremental completion and selection narrowing framework
 ;;; https://github.com/emacs-helm/helm
 (use-package helm
@@ -61,6 +64,7 @@
   (use-package helm-semantic)
   (use-package helm-ring)
   (use-package helm-projectile
+    :ensure t
     :bind (("C-x f" . helm-projectile)
            ("C-c p f" . helm-projectile-find-file)
            ("C-c p s" . helm-projectile-switch-project)))
