@@ -36,17 +36,11 @@
     ;; package management
     use-package
 
-    ;; themeing
-    rainbow-mode  beacon rainbow-delimiters
-
     ;; misc
     exec-path-from-shell symon
 
-    ;; for auto-complete
-    company popup
-
     ;; editing utilities
-     ag   smooth-scrolling
+    smooth-scrolling
     golden-ratio  anzu smart-tab
     shrink-whitespace undo-tree iedit smartscan  vlf
     imenu-anywhere
@@ -109,13 +103,32 @@
 ;; Load use-package, used for loading packages everywhere else
 (require 'use-package)
 
-;; Set to t to debug package loading or nil to disable
+;; debug package loading
 (setq use-package-verbose t)
 
 ;;; better-defaults --- A small number of better defaults for Emacs
 ;;; https://github.com/technomancy/better-defaults
 (use-package better-defaults
   :ensure t)
+
+;;; rainbow-mode  colorize string with color information
+;;; https://github.com/emacsmirror/rainbow-mode/blob/master/rainbow-mode.el
+(use-package rainbow-mode
+  :ensure t
+  :commands rainbow-mode)
+
+;;; beacon --- A light that follows your cursor around so you don't lose it!
+;;; https://github.com/Malabarba/beacon
+(use-package beacon
+  :ensure t
+  :commands beacon-mode)
+
+;;; popup --- Visual Popup Interface Library for Emacs
+;;; https://github.com/auto-complete/popup-el
+(use-package popup
+  :ensure t)
+
+
 
 ;; Setting up $PATH and other vars
 (use-package exec-path-from-shell
@@ -361,7 +374,7 @@ When using Homebrew, install it using \"brew install trash\"."
     ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
  '(package-selected-packages
    (quote
-    (all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
+    (discover-my-major all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package))))
 
 (defun my/shell-kill-buffer-sentinel (process event)
   (when (memq (process-status process) '(exit signal))
@@ -402,23 +415,30 @@ comint-replace-by-expanded-history-before-point."
                                         (indent-according-to-mode)))
 
 (global-set-key (kbd "C-w") 'kill-whole-line)
+(use-package discover-my-major
+  :ensure t)
 
 ;; A quick major mode help with discover-my-major
 (define-key 'help-command (kbd "C-m") 'discover-my-major)
 
+;; add shortcuts for help command
 (define-key 'help-command (kbd "C-f") 'find-function)
 (define-key 'help-command (kbd "C-k") 'find-function-on-key)
 (define-key 'help-command (kbd "C-v") 'find-variable)
 (define-key 'help-command (kbd "C-l") 'find-library)
-
 (define-key 'help-command (kbd "C-i") 'info-display-manual)
-
 
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
 (global-set-key (kbd "C-c i") 'imenu-anywhere)
-;; make some use of the Super key
-(global-set-key (kbd "s-g") 'god-local-mode)
+
+
+;;; god-mode --- Global minor mode for entering Emacs commands without modifier keys
+;;; https://github.com/chrisdone/god-mode
+(use-package god-mode
+  :ensure t
+  :bind
+  ("s-g" . god-local-mode))
 
 
 ;; Docker mode
@@ -728,8 +748,143 @@ comint-replace-by-expanded-history-before-point."
         ;; If nil, you can slightly boost invoke speed in exchange for text color
         helm-swoop-speed-or-color nil))
 
+
+(when (eq system-type 'darwin)
+  (add-hook 'after-init-hook #'my/setup-osx-fonts))
+
+;; fringe
+;; ------
+
+(defun my/set-fringe-background ()
+  "Set the fringe background to the same color as the regular background."
+  (interactive)
+  (setq my/fringe-background-color
+        (face-background 'default))
+  (custom-set-faces
+   `(fringe ((t (:background ,my/fringe-background-color))))))
+
+(add-hook 'after-init-hook #'my/set-fringe-background)
+
+;; Indicate where a buffer starts and stops
+(setq-default indicate-buffer-boundaries 'right)
+
+;; ediff
+;; -----
+
+(use-package ediff
+  :config
+  (progn
+    (setq
+     ;; Always split nicely for wide screens
+     ediff-split-window-function 'split-window-horizontally)))
+
+
+
+;; smooth-scrolling
+;; ----------------
+
+(use-package smooth-scrolling
+  :defer t
+  :config
+  (setq smooth-scroll-margin 3
+        scroll-margin 3
+        scroll-conservatively 101
+        scroll-preserve-screen-position t
+        auto-window-vscroll nil))
+
+(defun load-directory (dir)
+  (let ((load-it (lambda (f)
+                   (load-file (concat (file-name-as-directory dir) f)))
+                 ))
+    (mapc load-it (directory-files dir nil "\\.el$"))))
+
+(load-directory "./packages/")
+
+
+;; electric modes
+;; --------------
+
+;; Automatically instert pairs of characters
+(electric-pair-mode 1)
+(setq electric-pair-preserve-balance t
+      electric-pair-delete-adjacent-pairs t
+      electric-pair-open-newline-between-pairs nil)
+
+;; Auto-indentation
+(electric-indent-mode 1)
+
+;; Ignore electric indentation for python and yaml
+(defun electric-indent-ignore-mode (char)
+  "Ignore electric indentation for python-mode"
+  (if (or (equal major-mode 'python-mode)
+          (equal major-mode 'yaml-mode))
+      'no-indent
+    nil))
+(add-hook 'electric-indent-functions 'electric-indent-ignore-mode)
+
+;; Automatic layout
+(electric-layout-mode 1)
+
+
+;; flycheck
+;; --------
+
+(use-package flycheck
+  :defer 5
+  :bind (("M-g M-n" . flycheck-next-error)
+         ("M-g M-p" . flycheck-previous-error)
+         ("M-g M-=" . flycheck-list-errors))
+  :init (global-flycheck-mode)
+  :diminish flycheck-mode
+  :config
+  (progn
+    (setq-default flycheck-disabled-checkers '(reek-ruby emacs-lisp-checkdoc))
+    (use-package flycheck-pos-tip
+      :init (flycheck-pos-tip-mode))
+    (use-package helm-flycheck
+      :ensure t
+      :init (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))))
+
+;; with-editor
+;; -----------
+
+(use-package with-editor
+  :init
+  (progn
+    (add-hook 'shell-mode-hook 'with-editor-export-editor)
+    (add-hook 'eshell-mode-hook 'with-editor-export-editor)))
+
+
+
+;; helm-swoop
+;; ----------
+
+(use-package helm-swoop
+  :ensure t
+  :bind (("M-i" . helm-swoop)
+         ("M-I" . helm-swoop-back-to-last-point)
+         ("C-c M-i" . helm-multi-swoop))
+  :config
+  ;; When doing isearch, hand the word over to helm-swoop
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+  ;; From helm-swoop to helm-multi-swoop-all
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  ;; Save buffer when helm-multi-swoop-edit complete
+  (setq helm-multi-swoop-edit-save t
+        ;; If this value is t, split window inside the current window
+        helm-swoop-split-with-multiple-windows t
+        ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+        helm-swoop-split-direction 'split-window-vertically
+        ;; If nil, you can slightly boost invoke speed in exchange for text color
+        helm-swoop-speed-or-color nil))
+
 ;; helm
 ;; ----
+
+;;; ag --- An Emacs frontend to The Silver Searcher
+;;; https://github.com/Wilfred/ag.el
+(use-package ag
+  :ensure t)
 
 (use-package helm
   :ensure t)
