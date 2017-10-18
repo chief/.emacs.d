@@ -820,28 +820,6 @@ comint-replace-by-expanded-history-before-point."
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode)))
 
-;; auto-completion (company)
-;; -------------------------
-
-(use-package company
-  :defer t
-  :diminish company-mode
-  :bind ("C-." . company-complete)
-  :init (add-hook #'prog-mode-hook #'company-mode)
-  :config
-  (progn
-    (setq company-idle-delay 0.4
-          ;; min prefix of 3 chars
-          company-minimum-prefix-length 3
-          company-selection-wrap-around t
-          company-show-numbers t
-          company-dabbrev-downcase nil
-          company-transformers '(company-sort-by-occurrence))
-    (bind-keys :map company-active-map
-               ("C-n" . company-select-next)
-               ("C-p" . company-select-previous)
-               ("C-d" . company-show-doc-buffer)
-               ("<tab>" . company-complete))))
 
 ;; smart-tab
 ;; ---------
@@ -936,15 +914,6 @@ comint-replace-by-expanded-history-before-point."
   (add-hook 'emacs-lisp-mode-hook #'idle-highlight-mode)
   (add-hook 'clojure-lisp-mode-hook #'idle-highlight-mode))
 
-;; rainbow-delimiters-mode
-;; -----------------------
-
-;; Use different colors per set of parenthesis. Only in lisps.
-(use-package rainbow-delimiters
-  :init
-  (add-hook #'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-  (add-hook #'clojure-mode-hook #'rainbow-delimiters-mode)
-  (add-hook #'scheme-mode-hook #'rainbow-delimiters-mode))
 
 ;; *******************
 ;; Extra Functionality

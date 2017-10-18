@@ -117,4 +117,35 @@
   (use-package smartparens-config)
   (setq sp-base-key-bindings 'paredit)
   (setq sp-autoskip-closing-pair 'always)
-  (setq sp-hybrid-kill-entire-symbol nil))
+  (setq sp-hybrid-kill-entire-symbol nil)
+  (add-hook 'prog-mode-hook 'smartparens-mode))
+
+;;; rainbow-delimiters --- Emacs rainbow delimiters mode
+;;; https://github.com/Fanael/rainbow-delimiters
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+;;; company-mode --- Modular in-buffer completion framework for Emacs
+;;; http://company-mode.github.io
+(use-package company
+  :ensure t
+  :defer nil
+  :diminish company-mode
+  :bind ("C-." . company-complete)
+  :init (add-hook #'prog-mode-hook #'company-mode)
+  :config
+  (progn
+    (setq company-idle-delay 0.4
+          ;; min prefix of 3 chars
+          company-minimum-prefix-length 3
+          company-selection-wrap-around t
+          company-show-numbers t
+          company-dabbrev-downcase nil
+          company-transformers '(company-sort-by-occurrence))
+    (bind-keys :map company-active-map
+               ("C-n" . company-select-next)
+               ("C-p" . company-select-previous)
+               ("C-d" . company-show-doc-buffer)
+               ("<tab>" . company-complete))))
