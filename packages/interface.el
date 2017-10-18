@@ -111,3 +111,9 @@
           helm-grep-default-recurse-command
           "ggrep -a -d recurse %e -n%cH -e %p %f")))
 
+;;; god-mode --- Global minor mode for entering Emacs commands without modifier keys
+;;; https://github.com/chrisdone/god-mode
+(use-package god-mode
+  :ensure t
+  :bind
+  ("s-g" . god-local-mode))
