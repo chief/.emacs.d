@@ -414,7 +414,17 @@ comint-replace-by-expanded-history-before-point."
                                         (kill-line 0)
                                         (indent-according-to-mode)))
 
-(global-set-key (kbd "C-w") 'kill-whole-line)
+
+(global-set-key (kbd "C-w") 'my-kill-region-or-line)
+
+(defun my-kill-region-or-line (&optional arg)
+  "Kill active region or current line."
+  (interactive "p")
+  (if (use-region-p)
+      (sp-kill-region (region-beginning) (region-end)) ;; strict-mode version of kill-region
+    (sp-kill-whole-line))) ;; strict-mode version of kill-whole-line
+
+
 (use-package discover-my-major
   :ensure t)
 
