@@ -9,3 +9,8 @@
 (use-package beacon
   :ensure t
   :commands beacon-mode)
+
+;;; popup --- Visual Popup Interface Library for Emacs
+;;; https://github.com/auto-complete/popup-el
+(use-package popup
+  :ensure t)

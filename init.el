@@ -111,14 +111,6 @@
 (use-package better-defaults
   :ensure t)
 
-
-;;; popup --- Visual Popup Interface Library for Emacs
-;;; https://github.com/auto-complete/popup-el
-(use-package popup
-  :ensure t)
-
-
-
 ;; Setting up $PATH and other vars
 (use-package exec-path-from-shell
   :defer t
