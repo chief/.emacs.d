@@ -117,3 +117,15 @@
   :ensure t
   :bind
   ("s-g" . god-local-mode))
+
+;;; smooth-scrolling --- Emacs smooth scrolling package
+;;; https://github.com/aspiers/smooth-scrolling
+(use-package smooth-scrolling
+  :ensure t
+  :defer t
+  :config
+  (setq smooth-scroll-margin 3
+        scroll-margin 3
+        scroll-conservatively 101
+        scroll-preserve-screen-position t
+        auto-window-vscroll nil))

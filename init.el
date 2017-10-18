@@ -40,7 +40,6 @@
     exec-path-from-shell symon
 
     ;; editing utilities
-    smooth-scrolling
     golden-ratio  anzu smart-tab
     shrink-whitespace undo-tree iedit smartscan  vlf
     imenu-anywhere
@@ -587,17 +586,6 @@ comint-replace-by-expanded-history-before-point."
      ;; Always split nicely for wide screens
      ediff-split-window-function 'split-window-horizontally)))
 
-;; smooth-scrolling
-;; ----------------
-(use-package smooth-scrolling
-  :defer t
-  :config
-  (setq smooth-scroll-margin 3
-        scroll-margin 3
-        scroll-conservatively 101
-        scroll-preserve-screen-position t
-        auto-window-vscroll nil))
-
 (defun load-directory (dir)
   (let ((load-it (lambda (f)
                    (load-file (concat (file-name-as-directory dir) f)))
@@ -605,48 +593,6 @@ comint-replace-by-expanded-history-before-point."
     (mapc load-it (directory-files dir nil "\\.el$"))))
 
 (load-directory "./packages/")
-
-;; electric modes
-;; --------------
-;; Automatically instert pairs of characters
-(electric-pair-mode 1)
-(setq electric-pair-preserve-balance t
-      electric-pair-delete-adjacent-pairs t
-      electric-pair-open-newline-between-pairs nil)
-
-;; Auto-indentation
-(electric-indent-mode 1)
-
-;; Ignore electric indentation for python and yaml
-(defun electric-indent-ignore-mode (char)
-  "Ignore electric indentation for python-mode"
-  (if (or (equal major-mode 'python-mode)
-          (equal major-mode 'yaml-mode))
-      'no-indent
-    nil))
-(add-hook 'electric-indent-functions 'electric-indent-ignore-mode)
-
-;; Automatic layout
-(electric-layout-mode 1)
-
-
-;; flycheck
-;; --------
-(use-package flycheck
-  :defer 5
-  :bind (("M-g M-n" . flycheck-next-error)
-         ("M-g M-p" . flycheck-previous-error)
-         ("M-g M-=" . flycheck-list-errors))
-  :init (global-flycheck-mode)
-  :diminish flycheck-mode
-  :config
-  (progn
-    (setq-default flycheck-disabled-checkers '(reek-ruby emacs-lisp-checkdoc))
-    (use-package flycheck-pos-tip
-      :init (flycheck-pos-tip-mode))
-    (use-package helm-flycheck
-      :ensure t
-      :init (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))))
 
 ;; with-editor
 ;; -----------
@@ -659,8 +605,6 @@ comint-replace-by-expanded-history-before-point."
 
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
-
-
 
 ;; electric modes
 ;; --------------
