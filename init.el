@@ -429,7 +429,7 @@ comint-replace-by-expanded-history-before-point."
 
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
-(global-set-key (kbd "C-c i") 'imenu-anywhere)
+
 
 
 ;;; god-mode --- Global minor mode for entering Emacs commands without modifier keys
@@ -1014,12 +1014,6 @@ comint-replace-by-expanded-history-before-point."
 (use-package iedit
   :bind ("C-;" . iedit-mode))
 
-;; imenu-anywhere
-;; --------------
-
-(use-package imenu-anywhere
-  :disabled t
-  :bind (("C-c i" . imenu-anywhere)))
 
 
 

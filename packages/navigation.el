@@ -14,3 +14,9 @@
   (setq windmove-wrap-around t)
   :config
   (windmove-default-keybindings))
+
+;;; imenu-anywhere --- ido/ivy/helm imenu tag selection across buffers with the same mode/project etc
+;;; https://github.com/vspinu/imenu-anywhere
+(use-package imenu-anywhere
+  :ensure t
+  :bind (("C-c i" . imenu-anywhere)))
