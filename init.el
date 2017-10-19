@@ -619,14 +619,6 @@ comint-replace-by-expanded-history-before-point."
 ;; View large files
 (use-package vlf-setup)
 
-;; Hightlight idle things. Only in certain modes.
-(use-package idle-hightlight-mode
-  :init
-  (add-hook 'java-mode-hook #'idle-highlight-mode)
-  (add-hook 'emacs-lisp-mode-hook #'idle-highlight-mode)
-  (add-hook 'clojure-lisp-mode-hook #'idle-highlight-mode))
-
-
 ;; *******************
 ;; Extra Functionality
 ;; *******************
