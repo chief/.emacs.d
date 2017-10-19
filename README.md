@@ -10,3 +10,4 @@
 [ref](https://github.com/jwiegley/use-package/issues/453)
 - [ ] Check warnings during installation
 - [x] ~~Use  better-defaults  and remove duplications~~
+- [ ] Bind wheel-right and wheel-left
