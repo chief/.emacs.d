@@ -524,9 +524,7 @@ comint-replace-by-expanded-history-before-point."
                  ))
     (mapc load-it (directory-files dir nil "\\.el$"))))
 
-(load-directory "./packages/")
-
-
+(load-directory "~/.emacs.d/packages/")
 
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
