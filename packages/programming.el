@@ -164,3 +164,9 @@
     (add-hook 'shell-mode-hook 'with-editor-export-editor)
     (add-hook 'eshell-mode-hook 'with-editor-export-editor)
     (add-hook 'term-mode-hook 'with-editor-export-editor)))
+
+;;; dockerfile-mode --- An emacs mode for handling Dockerfiles
+;;; https://github.com/spotify/dockerfile-mode
+(use-package dockerfile-mode
+  :ensure t
+  :mode (("Dockerfile\\'" . dockerfile-mode)))

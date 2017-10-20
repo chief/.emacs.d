@@ -53,9 +53,6 @@
 
     ;; eshell
     eshell-prompt-extras
-
-    ;; docker
-    dockerfile-mode
     ))
 
 (defvar packages-refreshed? nil)
@@ -379,12 +376,6 @@ comint-replace-by-expanded-history-before-point."
 
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
-
-;; Docker mode
-;; -----------
-
-(use-package dockerfile-mode
-  :mode (("Dockerfile\\'" . dockerfile-mode)))
 
 ;; remove some backends form vc-mode
 (setq vc-handled-backends '())
