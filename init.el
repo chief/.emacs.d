@@ -49,7 +49,7 @@
     es-mode
 
     ;; markup language
-    markdown-mode markdown-mode+ yaml-mode web-mode
+    markdown-mode yaml-mode web-mode
 
     ;; eshell
     eshell-prompt-extras
