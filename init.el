@@ -268,7 +268,12 @@ When using Homebrew, install it using \"brew install trash\"."
 
   ;; Trackpad scrolling
   (global-set-key [wheel-up] 'previous-line)
-  (global-set-key [wheel-down] 'next-line))
+  (global-set-key [wheel-down] 'next-line)
+  (global-set-key [wheel-left] 'left-char)
+  (global-set-key [wheel-right] 'right-char)
+
+  )
+
 
 ;; Settings for temporary files
 (setq savehist-additional-variables
