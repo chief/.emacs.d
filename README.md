@@ -11,3 +11,4 @@
 - [ ] Check warnings during installation
 - [x] ~~Use  better-defaults  and remove duplications~~
 - [x] ~~Bind wheel-right and wheel-left~~
+- [ ] Choose some packages as `disabled`
