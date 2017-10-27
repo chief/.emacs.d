@@ -53,7 +53,11 @@
   :ensure t
   :defer 20
   :diminish rspec-mode
-  :commands rspec-mode)
+  :commands rspec-mode
+  :init
+  (setq rspec-autosave-buffer t)
+  :config
+  (add-hook 'rspec-verify-method 'rspec--autosave-buffer-maybe))
 
 ;;; inf-ruby --- provides a REPL buffer connected to a Ruby subprocess.
 ;;; https://github.com/nonsequitur/inf-ruby
