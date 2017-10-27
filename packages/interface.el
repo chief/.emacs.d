@@ -127,10 +127,11 @@
 (use-package smooth-scrolling
   :ensure t
   :defer t
+  :init
+  (add-hook 'ruby-mode-hook 'smooth-scrolling-mode)
   :config
   (setq smooth-scroll-margin 10
         scroll-margin 3
         scroll-conservatively 101
         scroll-preserve-screen-position t
-        auto-window-vscroll nil)
-  (smooth-scrolling-mode t))
+        auto-window-vscroll nil))
