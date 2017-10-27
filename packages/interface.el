@@ -128,7 +128,7 @@
   :ensure t
   :defer t
   :config
-  (setq smooth-scroll-margin 3
+  (setq smooth-scroll-margin 10
         scroll-margin 3
         scroll-conservatively 101
         scroll-preserve-screen-position t
