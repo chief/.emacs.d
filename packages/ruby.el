@@ -17,6 +17,8 @@
          "\\.jbuilder\\'")
   :config
   (progn
+    (eldoc-mode t)
+
     (setq ruby-insert-encoding-magic-comment nil)
 
     ;; hook to delete whitespaces
