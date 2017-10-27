@@ -79,3 +79,8 @@
 ;;; https://github.com/bbatsov/rubocop-emacs
 (use-package rubocop
   :ensure t)
+
+(use-package yard-mode
+  :ensure t
+  :init
+  (add-hook 'ruby-mode-hook 'yard-mode))
