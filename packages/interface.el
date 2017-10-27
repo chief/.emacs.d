@@ -132,4 +132,5 @@
         scroll-margin 3
         scroll-conservatively 101
         scroll-preserve-screen-position t
-        auto-window-vscroll nil))
+        auto-window-vscroll nil)
+  (smooth-scrolling-mode t))
