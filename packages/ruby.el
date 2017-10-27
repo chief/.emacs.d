@@ -76,6 +76,4 @@
 ;;; rubocop --- An Emacs interface for RuboCop
 ;;; https://github.com/bbatsov/rubocop-emacs
 (use-package rubocop
-  :ensure t
-  :init
-  (add-hook 'ruby-mode-hook 'rubocop-mode))
+  :ensure t)
