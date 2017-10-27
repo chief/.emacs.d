@@ -724,6 +724,20 @@ Deletes whitespace at join."
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(define-key global-map [(control shift down)] 'move-line-down)
+(define-key global-map [(control shift up)] 'move-line-up)
+
 ;; **************
 ;; Finalize Setup
 ;; **************
