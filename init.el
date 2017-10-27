@@ -285,8 +285,15 @@ When using Homebrew, install it using \"brew install trash\"."
 
 ;; delete auto-save files
 (setq delete-auto-save-files t)
+
+;; Change backup directory --- https://www.emacswiki.org/emacs/AutoSave
 (setq backup-directory-alist
-      '(("." . "~/.emacs_backups")))
+      `((".*" . ,temporary-file-directory)))
+
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+(setq auto-save-visited-file-name t)
 
 ;; delete old backups silently
 (setq delete-old-versions t)
