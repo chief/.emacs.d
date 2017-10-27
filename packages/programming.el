@@ -97,9 +97,9 @@
 
 ;; highlight FIXME and TODO
 (defun my/add-watchwords ()
-  "Highlight FIXME, TODO in code TODO"
+  "Highlight FIXME, TODO and REFACTOR in code TODO"
   (font-lock-add-keywords
-   nil '(("\\<\\(FIXME:?\\|TODO:?\\)\\>"
+   nil '(("\\<\\(FIXME:?\\|TODO:?\\|REFACTOR:?\\)\\>"
           1 '((:foreground "#d7a3ad") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook #'my/add-watchwords)
