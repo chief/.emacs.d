@@ -331,8 +331,8 @@ When using Homebrew, install it using \"brew install trash\"."
   (set (make-local-variable 'scroll-conservatively) 10))
 
 
-(global-set-key (kbd "<mouse-4>") 'scroll-down )
-(global-set-key (kbd "<mouse-5>") 'scroll-up)
+(global-set-key (kbd "<mouse-4>") 'previous-line)
+(global-set-key (kbd "<mouse-5>") 'next-line)
 
 (defadvice comint-previous-matching-input
     (around suppress-history-item-messages activate)
