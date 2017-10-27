@@ -9,11 +9,18 @@
          "Gemfile\\'"
          "Guardfile\\'"
          "Capfile\\'"
-         "\\.cap\\'")
+         "\\.cap\\'"
+         "\\.thor\\'"
+         "\\.rabl\\'"
+         "Thorfile\\'"
+         "Vagrantfile\\'"
+         "\\.jbuilder\\'")
   :config
   (progn
-    ;; (inf-ruby-minor-mode t)
-    (setq ruby-insert-encoding-magic-comment nil)))
+    (setq ruby-insert-encoding-magic-comment nil)
+
+    ;; hook to delete whitespaces
+    (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 
 ;;; ruby-tools --- Collection of handy functions for Emacs ruby-mode
 ;;; https://github.com/rejeep/ruby-tools.el
@@ -21,7 +28,9 @@
   :ensure t
   :diminish ""
   :init
-  (add-hook 'ruby-mode-hook 'ruby-tools-mode))
+  (add-hook 'ruby-mode-hook 'ruby-tools-mode)
+  :config
+  (ruby-tools-mode t))
 
 ;;; rbenv --- use rbenv to manage your Ruby versions within Emacs
 ;;; https://github.com/senny/rbenv.el
@@ -42,7 +51,9 @@
   :ensure t
   :defer 20
   :diminish rspec-mode
-  :commands rspec-mode)
+  :commands rspec-mode
+  :init
+  (add-hook 'ruby-mode-hook 'rspec-mode))
 
 ;;; inf-ruby --- provides a REPL buffer connected to a Ruby subprocess.
 ;;; https://github.com/nonsequitur/inf-ruby
@@ -64,3 +75,9 @@
   (eval-after-load 'company
     '(push 'company-robe company-backends)))
 
+;;; rubocop --- An Emacs interface for RuboCop
+;;; https://github.com/bbatsov/rubocop-emacs
+(use-package rubocop
+  :ensure t
+  :init
+  (add-hook 'ruby-mode-hook 'rubocop-mode))
