@@ -51,9 +51,7 @@
   :ensure t
   :defer 20
   :diminish rspec-mode
-  :commands rspec-mode
-  :init
-  (add-hook 'ruby-mode-hook 'rspec-mode))
+  :commands rspec-mode)
 
 ;;; inf-ruby --- provides a REPL buffer connected to a Ruby subprocess.
 ;;; https://github.com/nonsequitur/inf-ruby
