@@ -97,7 +97,7 @@
 
 ;; highlight FIXME and TODO
 (defun my/add-watchwords ()
-  "Highlight FIXME, TODO, and NOCOMMIT in code TODO"
+  "Highlight FIXME, TODO in code TODO"
   (font-lock-add-keywords
    nil '(("\\<\\(FIXME:?\\|TODO:?\\)\\>"
           1 '((:foreground "#d7a3ad") (:weight bold)) t))))
