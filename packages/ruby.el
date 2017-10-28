@@ -84,7 +84,18 @@
 (use-package rubocop
   :ensure t)
 
+;;; yard-mode --- Emacs minor mode for editing YARD tags
+;;; https://github.com/pd/yard-mode.el
 (use-package yard-mode
   :ensure t
   :init
   (add-hook 'ruby-mode-hook 'yard-mode))
+
+;;; yaml-mode --- The emacs major mode for editing files in the YAML data serialization format.
+;;; https://github.com/yoshiki/yaml-mode
+(use-package yaml-mode
+  :ensure t
+  :config
+   (add-hook 'yaml-mode-hook
+      '(lambda ()
+        (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
