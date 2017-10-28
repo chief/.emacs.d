@@ -49,7 +49,7 @@
     es-mode
 
     ;; markup language
-    markdown-mode yaml-mode web-mode
+    yaml-mode web-mode
 
     ;; eshell
     eshell-prompt-extras
@@ -561,18 +561,6 @@ comint-replace-by-expanded-history-before-point."
 
 ;; Automatic layout
 (electric-layout-mode 1)
-
-;; markdown-mode
-;; -------------
-
-(use-package markdown-mode
-  :init (add-hook 'markdown-mode-hook 'whitespace-mode)
-  :commands (markdown-mode gfm-mode)
-  :mode (("\\README\\.md\\'" . gfm-mode)
-         ("github\\.com.*\\.txt\\'" . gfm-mode)
-         ("\\.md\\'"          . markdown-mode)
-         ("\\.markdown\\'"    . markdown-mode)))
-
 
 ;; smart-tab
 ;; ---------

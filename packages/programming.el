@@ -176,3 +176,16 @@
 (use-package subword
   :ensure t
   :diminish subword)
+
+;;; markdown-mode --- Emacs Markdown Mode
+;;; https://github.com/jrblevin/markdown-mode
+(use-package markdown-mode
+  :ensure t
+  :init
+  (add-hook 'markdown-mode-hook 'whitespace-mode)
+  (setq markdown-command "multimarkdown")
+  :commands (markdown-mode gfm-mode)
+  :mode (("\\README\\.md\\'" . gfm-mode)
+         ("github\\.com.*\\.txt\\'" . gfm-mode)
+         ("\\.md\\'"          . markdown-mode)
+         ("\\.markdown\\'"    . markdown-mode)))
