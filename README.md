@@ -11,3 +11,5 @@
 - [ ] Check warnings during installation
 - [x] ~~Use  better-defaults  and remove duplications~~
 - [x] ~~Bind wheel-right and wheel-left~~
+- [ ] Check paredit-mode with ruby-mode, eg. space before parenthesis
+- [ ] Check my-kill-region-or-line function with empty lines
