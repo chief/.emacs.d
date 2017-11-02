@@ -137,6 +137,7 @@
   :init (add-hook #'prog-mode-hook #'company-mode)
   :config
   (progn
+    (add-to-list 'company-backends 'company-tern)
     (setq company-idle-delay 0.4
           ;; min prefix of 3 chars
           company-minimum-prefix-length 3
@@ -188,3 +189,9 @@
          ("github\\.com.*\\.txt\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode)))
+
+
+;;; helm-dash --- Browse Dash docsets inside emacs
+;;; https://github.com/areina/helm-dash
+(use-package helm-dash
+  :ensure t)
