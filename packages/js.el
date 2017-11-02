@@ -14,8 +14,6 @@
 (use-package json-mode
   :ensure t)
 
-;; (setq-default js-indent-level 2)
-
 ;;; js2-mode --- Improved JavaScript editing mode
 ;;; https://github.com/mooz/js2-mode
 (use-package js2-mode
@@ -70,6 +68,13 @@
   :init
   (add-hook 'js-mode-hook 'indium-interaction-mode))
 
+;;; rjsx-mode --- Emacs major modes for various Git configuration files
+;;; https://github.com/felipeochoa/rjsx-mode
+(use-package rjsx-mode
+  :ensure t
+  :mode "\\.jsx\\'"
+  :config
+  (add-to-list 'auto-mode-alist '("components\\/.*\\.jsx\\'" . rjsx-mode)))
 
 ;; References
 ;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
