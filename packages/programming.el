@@ -195,3 +195,8 @@
 ;;; https://github.com/areina/helm-dash
 (use-package helm-dash
   :ensure t)
+
+;;; git-modes --- Emacs major modes for various Git configuration files
+;;; https://github.com/magit/git-modes
+(use-package gitignore-mode
+  :ensure t)
