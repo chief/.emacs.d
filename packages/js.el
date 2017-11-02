@@ -23,6 +23,7 @@
   :mode "\\.js\\'"
   :config
   (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+  (setq-default js-indent-level 2)
   (setq-default js-auto-indent-flag nil))
 
 (use-package skewer-mode
