@@ -1,3 +1,5 @@
+<img src="https://github.com/chief/.emacs.d/blob/master/logo/test.jpg" height=320/>
+
 ## Emacs version
 
 Tested on emacs versions >=25
