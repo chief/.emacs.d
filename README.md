@@ -1,4 +1,4 @@
-<img src="https://github.com/chief/.emacs.d/blob/master/logo/test.jpg" height=320/>
+<img src="https://github.com/chief/.emacs.d/blob/master/logo/test.jpg" height=200/>
 
 ## Emacs version
 
