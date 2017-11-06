@@ -20,3 +20,8 @@ Tested on emacs versions >=25
 - [ ] Check paredit-mode with ruby-mode, eg. space before parenthesis
 - [ ] Check my-kill-region-or-line function with empty lines
 - [x] ~~Add js package~~
+
+## Credits
+
+* @greenonion's [dotfiles](https://github.com/greenonion/dotfiles)
+* @bbatsov's [prelude](https://github.com/bbatsov/prelude)
