@@ -26,3 +26,4 @@ backups
 .emacs.desktop
 .emacs.desktop.lock
 projectile.cache
+*.log
