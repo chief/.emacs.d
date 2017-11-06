@@ -23,5 +23,5 @@ Tested on emacs versions >=25
 
 ## Credits
 
-* @greenonion's [dotfiles](https://github.com/greenonion/dotfiles)
-* @bbatsov's [prelude](https://github.com/bbatsov/prelude)
+* greenonion's [dotfiles](https://github.com/greenonion/dotfiles)
+* bbatsov's [prelude](https://github.com/bbatsov/prelude)
