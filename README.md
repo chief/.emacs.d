@@ -1,5 +1,11 @@
 <img src="https://github.com/chief/.emacs.d/blob/master/logo/test.jpg" height=200/>
 
+## Install
+
+``` shell
+git clone https://github.com/chief/.emacs.d.git ~/.emacs.d
+```
+
 ## Emacs version
 
 Tested on emacs versions >=25
