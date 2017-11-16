@@ -6,7 +6,7 @@ Tested on emacs versions >=25
 
 ## TODO
 
-- [ ] Group all lisp together (elisp, clojure, paredit)
+- [x] ~~Group all lisp together (elisp, clojure, paredit)~~
 - [ ] Examine `add-hook` placement,
   [ref](https://github.com/jwiegley/use-package/issues/228)
 - [x] ~~Enhance ruby-mode with yard paredit rubocop~~
