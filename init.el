@@ -1,5 +1,3 @@
-;; Credits to dakrone for the inspiration.
-;;
 ;; Turn on debugging
 (setq debug-on-error t)
 (setq debug-on-quit t)
@@ -20,17 +18,16 @@
 
 (require 'cl-lib)
 
-;; highlight the current line
+;; Highlight the current line
 (global-hl-line-mode t)
 
 ;; Save desktop
-(desktop-save-mode 1)
+(desktop-save-mode t)
 
-;; clean up obsolete buffers automatically
+;; Clean up obsolete buffers automatically
 (require 'midnight)
 
 ;; Packages that need to be installed
-
 (defvar my/install-packages
   '(
     ;; package management
@@ -66,7 +63,7 @@
 ;; Load use-package, used for loading packages everywhere else
 (require 'use-package)
 
-;; debug package loading
+;; Debug package loading
 (setq use-package-verbose t)
 
 ;;; better-defaults --- A small number of better defaults for Emacs
@@ -89,43 +86,43 @@
 (setq user-full-name "Giorgos Tsiftsis"
       user-mail-address "giorgos.tsiftsis@gmail.com")
 
-;; prefer UTF-8 everywhere: language, terminal, keyboard, buffers
+;; Prefer UTF-8 everywhere: language, terminal, keyboard, buffers
 (set-language-environment "UTF-8")
 
 (set-default-coding-systems 'utf-8)
 
 (prefer-coding-system 'utf-8)
 
-;; turn on syntax highlighting for all buffers
+;; Turn on syntax highlighting for all buffers
 (global-font-lock-mode t)
 
-;; raise maximum number of logs in *Messages*
+;; Raise maximum number of logs in *Messages*
 (setq message-log-max 16384)
 
-;; configure the GC
+;; Configure the GC
 (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
 
-;; set font-lock speed (https://www.emacswiki.org/emacs/FontLockSpeed)
-(setq font-lock-support-mode 'jit-lock-mode)
-(setq jit-lock-stealth-time 16
+;; Set font-lock speed (https://www.emacswiki.org/emacs/FontLockSpeed)
+(setq font-lock-support-mode 'jit-lock-mode
+      jit-lock-stealth-time 16
       jit-lock-defer-contextually t
       jit-lock-stealth-nice 0.5)
 (setq-default font-lock-multiline t)
 
-;; make gnutls a bit safer
+;; Make gnutls a bit safer
 (setq gnutls-min-prime-bits 4096)
 
-;; delete selected region on typing
+;; Delete selected region on typing
 (delete-selection-mode t)
 
-;; set large file warning to 26MB
+;; Set large file warning to 26MB
 (setq large-file-warning-threshold (* 25 1024 1024))
 
-(transient-mark-mode 1)
+(transient-mark-mode t)
 
 (setq-default indicate-empty-lines nil)
 
-;; turn off all kinds of modes
+;; Turn off all kinds of modes
 (when (functionp 'mouse-wheel-mode)
   (mouse-wheel-mode -1))
 (when (functionp 'tooltip-mode)
@@ -133,72 +130,72 @@
 (when (functionp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
-;; don't blink
+;; Don't blink
 (when (functionp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
-;; don't beep
+;; Don't beep
 (setq ring-bell-function (lambda ()))
 
-;; don't show startup message
+;; Don't show startup message
 (setq inhibit-startup-screen t
       initial-major-mode 'fundamental-mode)
 
-;; show line and column numbers in mode line
+;; Show line and column numbers in mode line
 (line-number-mode t)
 
 (column-number-mode t)
 
-;; ignore case in file name completion
+;; Ignore case in file name completion
 (setq read-file-name-completion-ignore-case t)
 
 ;; y or n should suffice
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; confirm when killing only on graphical session
+;; Confirm when killing only on graphical session
 (when (window-system)
   (setq confirm-kill-emacs 'yes-or-no-p))
 
 (setq line-move-visual t)
 
-;; hide mouse while typing
+;; Hide mouse while typing
 (setq make-pointer-invisible t)
 
-(setq-default default-tab-width 2)
+(setq-default tab-width 2)
 
-;; fix some weird color escape sequences
+;; Fix some weird color escape sequences
 (setq system-uses-terminfo nil)
 
-;; resolve symlinks
+;; Resolve symlinks
 (setq-default find-file-visit-truename t)
 
-;; single space ends a sentence
+;; Single space ends a sentence
 (setq sentence-end-double-space nil)
 
-;; split windows
+;; Split windows
 (setq split-height-threshold nil)
 (setq split-width-threshold 180)
 
-;; rescan for imenu changes
+;; Rescan for imenu changes
 (set-default 'imenu-auto-rescan t)
 
-;; seed random number generator
+;; Seed random number generator
 (random t)
 
-;; switch to unified diffs
+;; Switch to unified diffs
 (setq diff-switches "-u")
 
-;; turn on auto-fill mode in text buffers
+;; Turn on auto-fill mode in text buffers
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-;; never kill the *scratch* buffer
+;; Never kill the *scratch* buffer
 (with-current-buffer "*scratch*"
   (emacs-lock-mode 'kill))
 
-;; automatically revert file if changed on disk
+;; Automatically revert file if changed on disk
 (global-auto-revert-mode t)
 
-;; be quiet about reverting files
+;; Be quiet about reverting files
 (setq auto-revert-verbose nil)
 
 ;; GUI-specific
@@ -268,7 +265,6 @@ When using Homebrew, install it using \"brew install trash\"."
 
   )
 
-
 ;; Settings for temporary files
 (setq savehist-additional-variables
       ;; also save my search entries
@@ -277,7 +273,7 @@ When using Homebrew, install it using \"brew install trash\"."
 (savehist-mode t)
 (setq-default save-place t)
 
-;; delete auto-save files
+;; Delete auto-save files
 (setq delete-auto-save-files t)
 
 ;; Change backup directory --- https://www.emacswiki.org/emacs/AutoSave
@@ -289,7 +285,7 @@ When using Homebrew, install it using \"brew install trash\"."
 
 (setq auto-save-visited-file-name t)
 
-;; delete old backups silently
+;; Delete old backups silently
 (setq delete-old-versions t)
 
 ;; Shell settings
@@ -383,10 +379,10 @@ comint-replace-by-expanded-history-before-point."
 (global-set-key [(control shift up)]  'move-text-up)
 (global-set-key [(control shift down)]  'move-text-down)
 
-;; remove some backends form vc-mode
+;; Remove some backends form vc-mode
 (setq vc-handled-backends '())
 
-;; highlight lines
+;; Highlight lines
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
 ;; Clojure
@@ -415,10 +411,6 @@ comint-replace-by-expanded-history-before-point."
     ;; Midje
     (facts 2)
     (fact 2)))
-
-;; Coffeescript
-;; ------------
-
 
 
 ;; Rest Client
