@@ -202,15 +202,6 @@
 (when (window-system)
   (setenv "EMACS_GUI" "t"))
 
-;; prettify symbols
-(when (boundp 'global-prettify-symbols-mode)
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (push '("lambda" . ?λ) prettify-symbols-alist)))
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (push '("fn" . ?ƒ) prettify-symbols-alist)))
-  (global-prettify-symbols-mode +1))
 
 (setq tls-program
       ;; Defaults:
@@ -384,34 +375,6 @@ comint-replace-by-expanded-history-before-point."
 
 ;; Highlight lines
 (add-hook 'prog-mode-hook #'hl-line-mode)
-
-;; Clojure
-;; -------
-(defun my/setup-clojure-hook ()
-  "Set up Clojure"
-  (eldoc-mode 1)
-  (subword-mode t)
-  (paredit-mode 1)
-  (global-set-key (kbd "C-c t") 'clojure-jump-between-tests-and-code))
-
-(use-package clojure-mode
-  :init
-  (add-hook #'clojure-mode-hook #'my/setup-clojure-hook)
-  :config
-  (define-clojure-indent
-    ;; Compojure routes
-    (defroutes 'defun)
-    (GET 2)
-    (POST 2)
-    (PUT 2)
-    (DELETE 2)
-    (HEAD 2)
-    (ANY 2)
-    (context 2)
-    ;; Midje
-    (facts 2)
-    (fact 2)))
-
 
 ;; Rest Client
 ;; -----------

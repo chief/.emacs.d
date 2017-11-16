@@ -19,7 +19,10 @@
                       :underline t :foreground "green"
                       :weight 'bold)
   (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-  (add-hook 'ielm-mode-hook 'eldoc-mode))
+  (add-hook 'ielm-mode-hook 'eldoc-mode)
+  (add-hook 'clojure-mode-hook 'eldoc-mode)
+  (add-hook 'cider-mode-hook 'eldoc-mode)
+  )
 
 ;;; lisp-mode.el --- Lisp mode, and its idiosyncratic commands
 ;;; https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/lisp-mode.el
@@ -58,3 +61,43 @@
 (use-package paren-face
   :ensure t
   :init (global-paren-face-mode))
+
+;;; clojure-mode --- Emacs support for the Clojure(Script) programming language
+;;; https://github.com/clojure-emacs/clojure-mode
+(use-package clojure-mode
+  :ensure t
+  :config
+  (define-clojure-indent
+    ;; Compojure routes
+    (defroutes 'defun)
+    (GET 2)
+    (POST 2)
+    (PUT 2)
+    (DELETE 2)
+    (HEAD 2)
+    (ANY 2)
+    (context 2)
+    ;; Midje
+    (facts 2)
+    (fact 2)))
+
+;;; cider --- The Clojure Interactive Development Environment that Rocks for Emacs
+;;; https://github.com/clojure-emacs/cider
+(use-package cider
+  :ensure t
+  :defer 30
+  :init
+  (add-hook 'cider-mode-hook 'company-mode)
+  (add-hook 'cider-repl-mode-hook 'company-mode)
+  :config
+  (setq cider-repl-display-help-banner nil))
+
+;; prettify symbols
+(when (boundp 'global-prettify-symbols-mode)
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (push '("lambda" . ?λ) prettify-symbols-alist)))
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (push '("fn" . ?ƒ) prettify-symbols-alist)))
+  (global-prettify-symbols-mode +1))
