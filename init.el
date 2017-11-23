@@ -494,6 +494,7 @@ comint-replace-by-expanded-history-before-point."
 ;; Show system monitor when Emacs is inactive
 (use-package symon
   :if window-system
+  :ensure t
   :init
   (setq symon-refresh-rate 2
         symon-delay 60)
