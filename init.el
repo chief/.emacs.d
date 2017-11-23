@@ -32,9 +32,6 @@
   '(
     ;; package management
     use-package
-
-    ;; eshell
-    eshell-prompt-extras
     ))
 
 (defvar packages-refreshed? nil)

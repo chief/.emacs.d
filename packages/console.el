@@ -11,3 +11,14 @@
                                            "MANPATH"
                                            "LANG"))
     (exec-path-from-shell-initialize)))
+
+;;; eshell-prompt-extras --- Display extra information and color for your eshell prompt.
+;;; https://github.com/kaihaosw/eshell-prompt-extras
+(use-package eshell-prompt-extras
+  :ensure t
+  :init
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda)
+  :config
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  )
