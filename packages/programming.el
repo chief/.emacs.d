@@ -219,3 +219,9 @@
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'ruby-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'paredit-mode))
+
+;;; es-mode --- An Emacs major mode for interacting with Elasticsearch
+;;; https://github.com/dakrone/es-mode
+(use-package es-mode
+  :ensure t
+  :mode "\\.es$")

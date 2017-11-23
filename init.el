@@ -36,9 +36,6 @@
     ;; misc
     exec-path-from-shell symon
 
-    ;; elasticsearch
-    es-mode
-
     ;; markup language
     web-mode
 
@@ -396,11 +393,6 @@ comint-replace-by-expanded-history-before-point."
          ("\\.html?\\'" . web-mode)
          ("\\.hbs\\'" . web-mode))
   :init (add-hook 'web-mode-hook  'my/web-mode-hook))
-
-;; Elasticsearch
-(use-package es-mode
-  :ensure t
-  :mode "\\.es$")
 
 ;; Org-mode
 ;; --------
