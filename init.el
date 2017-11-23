@@ -36,9 +36,6 @@
     ;; misc
     exec-path-from-shell symon
 
-    ;; markup language
-    web-mode
-
     ;; eshell
     eshell-prompt-extras
     ))
@@ -378,21 +375,6 @@ comint-replace-by-expanded-history-before-point."
 (use-package restclient
   :mode ("\\.rest\\'" . restclient-mode))
 
-;; Web Mode
-;; --------
-(defun my/web-mode-hook ()
-  ;; HTML offset indentation
-  (setq web-mode-markup-indent-offset 2)
-  ;; CSS offset indentation
-  (setq web-mode-css-indent-offset 2)
-  ;; Script/code offset indentation
-  (setq web-mode-code-indent-offset 2))
-
-(use-package web-mode
-  :mode (("\\.erb\\'" . web-mode)
-         ("\\.html?\\'" . web-mode)
-         ("\\.hbs\\'" . web-mode))
-  :init (add-hook 'web-mode-hook  'my/web-mode-hook))
 
 ;; Org-mode
 ;; --------

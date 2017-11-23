@@ -225,3 +225,17 @@
 (use-package es-mode
   :ensure t
   :mode "\\.es$")
+
+;;; web-mode --- web template editing mode for emacs
+;;; https://github.com/fxbois/web-mode
+(use-package web-mode
+  :ensure t
+  :mode (("\\.erb\\'" . web-mode)
+         ("\\.html?\\'" . web-mode)
+         ("\\.hbs\\'" . web-mode))
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  ;; CSS offset indentation
+  (setq web-mode-css-indent-offset 2)
+  ;; Script/code offset indentation
+  (setq web-mode-code-indent-offset 2))
