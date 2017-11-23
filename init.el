@@ -33,9 +33,6 @@
     ;; package management
     use-package
 
-    ;; misc
-    exec-path-from-shell symon
-
     ;; eshell
     eshell-prompt-extras
     ))
@@ -65,17 +62,6 @@
 (use-package better-defaults
   :ensure t)
 
-;; Setting up $PATH and other vars
-(use-package exec-path-from-shell
-  :defer t
-  :init
-  (progn
-    (setq exec-path-from-shell-variables '("JAVA_HOME"
-                                           "PATH"
-                                           "WORKON_HOME"
-                                           "MANPATH"
-                                           "LANG"))
-    (exec-path-from-shell-initialize)))
 
 (setq user-full-name "Giorgos Tsiftsis"
       user-mail-address "giorgos.tsiftsis@gmail.com")
