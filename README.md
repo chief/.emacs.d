@@ -26,6 +26,7 @@ Tested on emacs versions >=25
 - [ ] Check paredit-mode with ruby-mode, eg. space before parenthesis
 - [ ] Check my-kill-region-or-line function with empty lines
 - [x] ~~Add js package~~
+- [ ] Check error with markdown-mode
 
 ## Credits
 
