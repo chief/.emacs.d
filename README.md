@@ -28,6 +28,7 @@ Tested on emacs versions >=25
 - [x] ~~Add js package~~
 - [ ] Check error with markdown-mode
 - [ ] Optimize the use of defer in use-package
+- [ ] Decrease loading time - Currently 5+ secs
 
 ## Credits
 
