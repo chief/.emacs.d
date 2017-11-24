@@ -27,6 +27,7 @@ Tested on emacs versions >=25
 - [ ] Check my-kill-region-or-line function with empty lines
 - [x] ~~Add js package~~
 - [ ] Check error with markdown-mode
+- [ ] Optimize the use of defer in use-package
 
 ## Credits
 
