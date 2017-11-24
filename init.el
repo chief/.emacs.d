@@ -27,26 +27,10 @@
 ;; Clean up obsolete buffers automatically
 (require 'midnight)
 
-;; Packages that need to be installed
-(defvar my/install-packages
-  '(
-    ;; package management
-    use-package
-    ))
-
-(defvar packages-refreshed? nil)
-
-(dolist (p my/install-packages)
-  (unless (package-installed-p p)
-    (unless packages-refreshed?
-      (package-refresh-contents)
-      (setq packages-refreshed? t))
-    (unwind-protect
-        (condition-case ex
-            (package-install p)
-          ('error (message "Failed to install package [%s], caught exception: [%s]"
-                           p ex)))
-      (message "Installed %s" p))))
+;; Install use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; Load use-package, used for loading packages everywhere else
 (require 'use-package)
