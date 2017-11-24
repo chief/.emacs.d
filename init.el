@@ -159,7 +159,6 @@
 (when (window-system)
   (setenv "EMACS_GUI" "t"))
 
-
 (setq tls-program
       ;; Defaults:
       ;; '("gnutls-cli --insecure -p %p %h"
@@ -209,9 +208,7 @@ When using Homebrew, install it using \"brew install trash\"."
   (global-set-key [wheel-up] 'previous-line)
   (global-set-key [wheel-down] 'next-line)
   (global-set-key [wheel-left] 'left-char)
-  (global-set-key [wheel-right] 'right-char)
-
-  )
+  (global-set-key [wheel-right] 'right-char))
 
 ;; Settings for temporary files
 (setq savehist-additional-variables
@@ -235,8 +232,6 @@ When using Homebrew, install it using \"brew install trash\"."
 
 ;; Delete old backups silently
 (setq delete-old-versions t)
-
-;; Shell settings
 
 ;; use cat for shell pager
 (setenv "PAGER" "cat")
@@ -301,7 +296,6 @@ comint-replace-by-expanded-history-before-point."
                                         (kill-line 0)
                                         (indent-according-to-mode)))
 
-
 (global-set-key (kbd "C-w") 'my-kill-region-or-line)
 
 (defun my-kill-region-or-line (&optional arg)
@@ -338,7 +332,6 @@ comint-replace-by-expanded-history-before-point."
 (use-package restclient
   :mode ("\\.rest\\'" . restclient-mode))
 
-
 ;; Org-mode
 ;; --------
 (use-package org
@@ -352,7 +345,6 @@ comint-replace-by-expanded-history-before-point."
   :ensure t
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode))
-
 
 (setq ns-use-srgb-colorspace t)
 
@@ -578,7 +570,6 @@ Deletes whitespace at join."
                 (lambda ()
                   (interactive)
                   (join-line -1)))
-
 
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
