@@ -1,9 +1,9 @@
+;; Keep track of loading time
+(defconst emacs-start-time (current-time))
+
 ;; Turn on debugging
 (setq debug-on-error t)
 (setq debug-on-quit t)
-
-;; Keep track of loading time
-(defconst emacs-start-time (current-time))
 
 ;; Initialize all ELPA packages
 (require 'package)
@@ -12,9 +12,6 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("melpa-stable" . "http://stable.melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
-
-(let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
-  (message "Loaded packages in %.3fs" elapsed))
 
 (require 'cl-lib)
 
@@ -42,7 +39,6 @@
 ;;; https://github.com/technomancy/better-defaults
 (use-package better-defaults
   :ensure t)
-
 
 (setq user-full-name "Giorgos Tsiftsis"
       user-mail-address "giorgos.tsiftsis@gmail.com")
@@ -608,14 +604,16 @@ Deletes whitespace at join."
 (setq debug-on-error nil)
 (setq debug-on-quit nil)
 
-;; Message how long it took to load everything (minus packages)
-(let ((elapsed (float-time (time-subtract (current-time)
-                                          emacs-start-time))))
-  (message "Loading settings...done (%.3fs)" elapsed))
 (put 'narrow-to-region 'disabled nil)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(fringe ((t (:background "#272822")))))
+
+;; Message how long it took to load everything
+(let ((elapsed (float-time (time-subtract (current-time)
+                                          emacs-start-time))))
+  (message "Loading emacs...done (%.3fs)" elapsed))
