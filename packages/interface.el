@@ -2,6 +2,7 @@
 ;;; https://github.com/PythonNut/helm-flx
 (use-package helm-flx
   :ensure t
+  :defer t
   :init (helm-flx-mode +1))
 
 ;;; helm-swoop --- Efficiently hopping squeezed lines powered by Emacs helm interface
@@ -29,18 +30,20 @@
 ;;; ag --- An Emacs frontend to The Silver Searcher
 ;;; https://github.com/Wilfred/ag.el
 (use-package ag
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package helm-ag
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; helm -- Emacs incremental completion and selection narrowing framework
 ;;; https://github.com/emacs-helm/helm
 (use-package helm
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package helm-config
-  :demand t
   :diminish helm-mode
   :bind
   (("C-x C-f" . helm-find-files)
@@ -54,15 +57,22 @@
    )
   :config
   (use-package helm-files
+    :defer t
     :config (setq helm-ff-file-compressed-list '("gz" "bz2" "zip" "tgz" "xz" "txz")))
-  (use-package helm-buffers)
+  (use-package helm-buffers
+    :defer t)
   (use-package helm-mode
+    :defer t
     :diminish helm-mode
     :init (helm-mode 1))
-  (use-package helm-misc)
-  (use-package helm-imenu)
-  (use-package helm-semantic)
-  (use-package helm-ring)
+  (use-package helm-misc
+    :defer t)
+  (use-package helm-imenu
+    :defer t)
+  (use-package helm-semantic
+    :defer t)
+  (use-package helm-ring
+    :defer t)
   (use-package helm-projectile
     :ensure t
     :bind (("C-x f" . helm-projectile)

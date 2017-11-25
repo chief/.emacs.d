@@ -2,5 +2,6 @@
 ;;; https://github.com/Malabarba/paradox
 (use-package paradox
   :ensure t
+  :defer t
   :config
   (paradox-enable))

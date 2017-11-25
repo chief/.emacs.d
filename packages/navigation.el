@@ -24,7 +24,9 @@
 ;; Jump between the same variable in multiple places.
 (use-package smartscan
   :ensure t
+  :defer t
   :init (add-hook #'prog-mode-hook #'smartscan-mode)
   :config
   (bind-key "M-'" #'other-window smartscan-map))
+
 

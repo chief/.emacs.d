@@ -2,6 +2,7 @@
 ;;; https://github.com/emacs-mirror/emacs/blob/master/lisp/whitespace.el
 ;;; http://emacsredux.com/blog/2013/05/31/highlight-lines-that-exceed-a-certain-length-limit/
 (use-package whitespace-mode
+  :defer t
   :init
   (setq whitespace-line-column 80
         whitespace-style '(tabs newline space-mark
@@ -108,13 +109,14 @@
 ;;; https://github.com/Fuco1/smartparens
 (use-package smartparens
   :ensure t
-  :defer 5
+  :defer t
   :diminish smartparens-mode
   :init
   (sp-use-paredit-bindings)
   (show-smartparens-global-mode t)
   :config
-  (use-package smartparens-config)
+  (use-package smartparens-config
+    :defer t)
   (setq sp-base-key-bindings 'paredit)
   (setq sp-autoskip-closing-pair 'always)
   (setq sp-hybrid-kill-entire-symbol nil)
@@ -124,6 +126,7 @@
 ;;; https://github.com/Fanael/rainbow-delimiters
 (use-package rainbow-delimiters
   :ensure t
+  :defer t
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
@@ -154,7 +157,8 @@
 ;;; git-timemachine --- Step through historic versions of git controlled file using everyone's favourite editor
 ;;; https://github.com/pidu/git-timemachine
 (use-package git-timemachine
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; with-editor --- Use the Emacsclient as the $EDITOR of child processes
 ;;; https://github.com/magit/with-editor
@@ -176,6 +180,7 @@
 ;;; https://github.com/emacs-mirror/emacs/blob/master/lisp/progmodes/subword.el
 (use-package subword
   :ensure t
+  :defer t
   :diminish subword)
 
 ;;; markdown-mode --- Emacs Markdown Mode
@@ -194,12 +199,14 @@
 ;;; helm-dash --- Browse Dash docsets inside emacs
 ;;; https://github.com/areina/helm-dash
 (use-package helm-dash
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; git-modes --- Emacs major modes for various Git configuration files
 ;;; https://github.com/magit/git-modes
 (use-package gitignore-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 ;;; paredit --- Minor mode for editing parentheses

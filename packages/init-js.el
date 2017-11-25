@@ -12,7 +12,8 @@
 ;;; json-mode --- Major mode for editing JSON files with emacs
 ;;; https://github.com/joshwnj/json-mode
 (use-package json-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; js2-mode --- Improved JavaScript editing mode
 ;;; https://github.com/mooz/js2-mode
@@ -26,6 +27,7 @@
 
 (use-package skewer-mode
   :ensure t
+  :defer t
   :init
   (add-hook 'js2-mode-hook 'skewer-mode))
 
@@ -34,6 +36,7 @@
 ;;; https://github.com/nicolaspetton/xref-js2
 (use-package xref-js2
   :ensure t
+  :defer t
   :config
   (add-hook 'js2-mode-hook (lambda ()
                              (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
@@ -51,6 +54,7 @@
 
 (use-package company-tern
   :ensure t
+  :defer t
   :init
   ;; (add-to-list 'company-backends 'company-tern)
   (add-hook 'js2-mode-hook (lambda () (tern-mode)))
@@ -65,6 +69,7 @@
 ;;; https://indium.readthedocs.io/en/latest/setup.html
 (use-package indium
   :ensure t
+  :defer t
   :init
   (add-hook 'js-mode-hook 'indium-interaction-mode))
 

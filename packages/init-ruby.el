@@ -28,6 +28,7 @@
 ;;; https://github.com/rejeep/ruby-tools.el
 (use-package ruby-tools
   :ensure t
+  :defer t
   :diminish ""
   :init
   (add-hook 'ruby-mode-hook 'ruby-tools-mode)
@@ -63,6 +64,7 @@
 ;;; https://github.com/nonsequitur/inf-ruby
 (use-package inf-ruby
   :ensure t
+  :defer t
   :init
   (add-hook 'after-init-hook 'inf-ruby-switch-setup)
   :config
@@ -72,6 +74,7 @@
 ;;; https://github.com/dgutov/robe
 (use-package robe
   :ensure t
+  :defer t
   :init
   (add-hook 'ruby-mode-hook 'robe-mode)
   :diminish ""
@@ -82,12 +85,14 @@
 ;;; rubocop --- An Emacs interface for RuboCop
 ;;; https://github.com/bbatsov/rubocop-emacs
 (use-package rubocop
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; yard-mode --- Emacs minor mode for editing YARD tags
 ;;; https://github.com/pd/yard-mode.el
 (use-package yard-mode
   :ensure t
+  :defer t
   :init
   (add-hook 'ruby-mode-hook 'yard-mode))
 
@@ -95,6 +100,7 @@
 ;;; https://github.com/yoshiki/yaml-mode
 (use-package yaml-mode
   :ensure t
+  :defer t
   :config
    (add-hook 'yaml-mode-hook
       '(lambda ()

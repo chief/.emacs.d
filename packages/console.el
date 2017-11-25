@@ -3,7 +3,7 @@
 (use-package exec-path-from-shell
   :ensure t
   :defer t
-  :init
+  :config
   (progn
     (setq exec-path-from-shell-variables '("JAVA_HOME"
                                            "PATH"
@@ -16,9 +16,9 @@
 ;;; https://github.com/kaihaosw/eshell-prompt-extras
 (use-package eshell-prompt-extras
   :ensure t
-  :init
+  :defer t
+  :config
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda)
-  :config
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   )

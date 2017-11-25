@@ -2,6 +2,7 @@
 ;;; https://github.com/purcell/elisp-slime-nav
 (use-package elisp-slime-nav
   :ensure t
+  :defer t
   :diminish elisp-slime-nav-mode
   :config
   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
@@ -11,6 +12,7 @@
 ;;; https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/eldoc.el
 (use-package eldoc
   :ensure t
+  :defer t
   :diminish eldoc-mode
   :init
   (setq eldoc-idle-deplay 0.3)
@@ -60,12 +62,14 @@
 ;;; https://github.com/tarsius/paren-face
 (use-package paren-face
   :ensure t
+  :defer t
   :init (global-paren-face-mode))
 
 ;;; clojure-mode --- Emacs support for the Clojure(Script) programming language
 ;;; https://github.com/clojure-emacs/clojure-mode
 (use-package clojure-mode
   :ensure t
+  :defer t
   :config
   (define-clojure-indent
     ;; Compojure routes
@@ -85,7 +89,7 @@
 ;;; https://github.com/clojure-emacs/cider
 (use-package cider
   :ensure t
-  :defer 30
+  :defer t
   :init
   (add-hook 'cider-mode-hook 'company-mode)
   (add-hook 'cider-repl-mode-hook 'company-mode)

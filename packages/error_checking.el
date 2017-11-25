@@ -2,7 +2,6 @@
 ;; --------
 (use-package flycheck
   :ensure t
-  :defer 5
   :bind (("M-g M-n" . flycheck-next-error)
          ("M-g M-p" . flycheck-previous-error)
          ("M-g M-=" . flycheck-list-errors))
@@ -13,9 +12,11 @@
     (setq-default flycheck-disabled-checkers '(reek-ruby emacs-lisp-checkdoc))
     (use-package flycheck-pos-tip
       :ensure t
+      :defer t
       :init (flycheck-pos-tip-mode))
     (use-package helm-flycheck
       :ensure t
+      :defer t
       :init (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))))
 
 ;; Spell check and flyspell settings
@@ -54,5 +55,5 @@
   :init (add-hook 'prog-mode-hook #'my/enable-flyspell-prog-mode))
 
 (use-package flycheck-tip
-  :ensure t)
-
+  :ensure t
+  :defer t)

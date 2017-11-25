@@ -18,3 +18,4 @@
   :init
   (progn
     (diminish 'auto-fill-function "")))
+
