@@ -40,11 +40,11 @@
 ;;; helm -- Emacs incremental completion and selection narrowing framework
 ;;; https://github.com/emacs-helm/helm
 (use-package helm
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package helm-config
   :diminish helm-mode
+  :demand t
   :bind
   (("C-x C-f" . helm-find-files)
    ("M-y" . helm-show-kill-ring)
@@ -67,8 +67,7 @@
     :init (helm-mode 1))
   (use-package helm-misc
     :defer t)
-  (use-package helm-imenu
-    :defer t)
+  (use-package helm-imenu)
   (use-package helm-semantic
     :defer t)
   (use-package helm-ring
