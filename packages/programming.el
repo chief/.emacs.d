@@ -80,7 +80,12 @@
     (setq projectile-completion-system 'helm)
     ;; no fuzziness for projectile-helm
     (setq helm-projectile-fuzzy-match nil)
-    (helm-projectile-on))
+    (helm-projectile-on)
+
+    :bind (("C-x f" . helm-projectile)
+           ("C-c p f" . helm-projectile-find-file)
+           ("C-c p s" . helm-projectile-switch-project)))
+
   (projectile-mode))
 
 ;;; magit --- It's Magit! A Git porcelain inside Emacs

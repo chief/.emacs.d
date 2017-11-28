@@ -66,11 +66,6 @@
     :init (helm-mode 1))
   (use-package helm-misc)
   (use-package helm-imenu)
-  (use-package helm-projectile
-    :ensure t
-    :bind (("C-x f" . helm-projectile)
-           ("C-c p f" . helm-projectile-find-file)
-           ("C-c p s" . helm-projectile-switch-project)))
   (use-package helm-semantic)
   (use-package helm-ring)
 
