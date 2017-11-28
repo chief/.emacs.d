@@ -59,24 +59,22 @@
   (use-package helm-files
     :defer t
     :config (setq helm-ff-file-compressed-list '("gz" "bz2" "zip" "tgz" "xz" "txz")))
-  (use-package helm-buffers
-    :defer t)
+  (use-package helm-buffers)
   (use-package helm-mode
     :defer t
     :diminish helm-mode
     :init (helm-mode 1))
-  (use-package helm-misc
-    :defer t)
+  (use-package helm-misc)
   (use-package helm-imenu)
-  (use-package helm-semantic
-    :defer t)
-  (use-package helm-ring
-    :defer t)
   (use-package helm-projectile
     :ensure t
     :bind (("C-x f" . helm-projectile)
            ("C-c p f" . helm-projectile-find-file)
            ("C-c p s" . helm-projectile-switch-project)))
+  (use-package helm-semantic)
+  (use-package helm-ring)
+
+
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
 
