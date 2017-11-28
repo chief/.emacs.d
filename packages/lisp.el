@@ -2,7 +2,6 @@
 ;;; https://github.com/purcell/elisp-slime-nav
 (use-package elisp-slime-nav
   :ensure t
-  :defer t
   :diminish elisp-slime-nav-mode
   :config
   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
