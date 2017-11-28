@@ -53,7 +53,7 @@
 ;;; https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
-  :defer 5
+  ;; :defer 5
   :commands projectile-mode
   :diminish projectile-mode
   :config
