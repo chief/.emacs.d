@@ -22,3 +22,5 @@
         eshell-prompt-function 'epe-theme-lambda)
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   )
+
+(setq shell-file-name "/bin/bash")
