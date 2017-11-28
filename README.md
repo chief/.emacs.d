@@ -29,6 +29,7 @@ Tested on emacs versions >=25
 - [ ] Check error with markdown-mode
 - [ ] Optimize the use of defer in use-package
 - [ ] Decrease loading time - Currently ~~5+ secs~~ <2 secs
+- [ ] Investigate slow helm-projectile find files
 
 ## Credits
 
