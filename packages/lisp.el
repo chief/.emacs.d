@@ -12,7 +12,6 @@
 ;;; https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/eldoc.el
 (use-package eldoc
   :ensure t
-  :defer t
   :diminish eldoc-mode
   :init
   (setq eldoc-idle-deplay 0.3)
