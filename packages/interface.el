@@ -76,13 +76,17 @@
   (setq
    ;; truncate long lines in helm completion
    helm-truncate-lines t
+
    ;; do not display invisible candidates
    helm-quick-update t
+
    ;; open helm buffer inside current window, don't occupy whole other window
    helm-split-window-in-side-p t
+
    ;; move to end or beginning of source when reaching top or bottom
    ;; of source
    helm-move-to-line-cycle-in-source t
+
    ;; fuzzy matching
    helm-recentf-fuzzy-match t
    helm-locate-fuzzy-match nil ;; locate fuzzy is worthless
@@ -90,11 +94,12 @@
    helm-buffers-fuzzy-matching t
    helm-semantic-fuzzy-match t
    helm-imenu-fuzzy-match t
-   helm-completion-in-region-fuzzy-match t)
+   helm-completion-in-region-fuzzy-match t
+   )
 
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
   (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+  (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
 
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
