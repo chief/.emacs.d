@@ -491,18 +491,6 @@ comint-replace-by-expanded-history-before-point."
 (use-package iedit
   :bind ("C-;" . iedit-mode))
 
-;; Show system monitor when Emacs is inactive
-(use-package symon
-  :if window-system
-  :ensure t
-  :defer t
-  :init
-  (setq symon-refresh-rate 2
-        symon-delay 60)
-  (symon-mode t)
-  :config
-  (setq symon-sparkline-type 'bounded))
-
 ;; View large files
 ;; (use-package vlf-setup)
 
