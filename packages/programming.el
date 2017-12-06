@@ -139,7 +139,6 @@
 ;;; http://company-mode.github.io
 (use-package company
   :ensure t
-  :defer nil
   :diminish company-mode
   :bind ("C-." . company-complete)
   :init (add-hook #'prog-mode-hook #'company-mode)
