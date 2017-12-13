@@ -114,14 +114,12 @@
 ;;; https://github.com/Fuco1/smartparens
 (use-package smartparens
   :ensure t
-  :defer t
   :diminish smartparens-mode
   :init
   (sp-use-paredit-bindings)
   (show-smartparens-global-mode t)
   :config
-  (use-package smartparens-config
-    :defer t)
+  (use-package smartparens-config)
   (setq sp-base-key-bindings 'paredit)
   (setq sp-autoskip-closing-pair 'always)
   (setq sp-hybrid-kill-entire-symbol nil)
