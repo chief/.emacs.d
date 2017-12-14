@@ -37,8 +37,7 @@
 
 ;;; better-defaults --- A small number of better defaults for Emacs
 ;;; https://github.com/technomancy/better-defaults
-(use-package better-defaults
-  :ensure t)
+(use-package better-defaults :ensure t)
 
 (setq user-full-name "Giorgos Tsiftsis"
       user-mail-address "giorgos.tsiftsis@gmail.com")
@@ -56,6 +55,13 @@
 ;; Raise maximum number of logs in *Messages*
 (setq message-log-max 16384)
 
+;;
+;; Low level settings
+;;
+
+;; Seed random number generator
+(random t)
+
 ;; Configure the GC
 (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
 
@@ -69,15 +75,35 @@
 ;; Make gnutls a bit safer
 (setq gnutls-min-prime-bits 4096)
 
+;; Set large file warning to 26MB
+(setq large-file-warning-threshold (* 25 1024 1024))
+
+
+;;
+;; Editing settings
+;;
+
 ;; Delete selected region on typing
 (delete-selection-mode t)
 
-;; Set large file warning to 26MB
-(setq large-file-warning-threshold (* 25 1024 1024))
 
 (transient-mark-mode t)
 
 (setq-default indicate-empty-lines nil)
+
+(setq line-move-visual t)
+
+;; Hide mouse while typing
+(setq make-pointer-invisible t)
+
+;; Single space ends a sentence
+(setq sentence-end-double-space nil)
+
+(setq-default tab-width 2)
+
+;;
+;; Editor settings
+;;
 
 ;; Turn off all kinds of modes
 (when (functionp 'mouse-wheel-mode)
@@ -113,21 +139,12 @@
 (when (window-system)
   (setq confirm-kill-emacs 'yes-or-no-p))
 
-(setq line-move-visual t)
-
-;; Hide mouse while typing
-(setq make-pointer-invisible t)
-
-(setq-default tab-width 2)
 
 ;; Fix some weird color escape sequences
 (setq system-uses-terminfo nil)
 
 ;; Resolve symlinks
 (setq-default find-file-visit-truename t)
-
-;; Single space ends a sentence
-(setq sentence-end-double-space nil)
 
 ;; Split windows
 (setq split-height-threshold nil)
@@ -136,8 +153,6 @@
 ;; Rescan for imenu changes
 (set-default 'imenu-auto-rescan t)
 
-;; Seed random number generator
-(random t)
 
 ;; Switch to unified diffs
 (setq diff-switches "-u")
@@ -167,6 +182,7 @@
       '("gnutls-cli -p %p %h"
         "openssl s_client -connect %h:%p -no_ssl2 -no_ssl3 -ign_eof"))
 
+;;
 ;; OS-specific settings
 ;; --------------------
 
@@ -306,8 +322,7 @@ comint-replace-by-expanded-history-before-point."
       (sp-kill-region (region-beginning) (region-end)) ;; strict-mode version of kill-region
     (sp-kill-whole-line))) ;; strict-mode version of kill-whole-line
 
-(use-package discover-my-major
-  :ensure t)
+(use-package discover-my-major :ensure t)
 
 ;; A quick major mode help with discover-my-major
 (define-key 'help-command (kbd "C-m") 'discover-my-major)
