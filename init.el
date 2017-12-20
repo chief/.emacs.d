@@ -86,9 +86,6 @@
 ;; Delete selected region on typing
 (delete-selection-mode t)
 
-
-(transient-mark-mode t)
-
 (setq-default indicate-empty-lines nil)
 
 (setq line-move-visual t)
@@ -347,21 +344,6 @@ comint-replace-by-expanded-history-before-point."
 ;; -----------
 (use-package restclient
   :mode ("\\.rest\\'" . restclient-mode))
-
-;; Org-mode
-;; --------
-(use-package org
-  :ensure t
-  :bind (("C-c l" . org-store-link)
-         ("C-c a" . org-agenda)
-         ("C-c b" . org-iswitchb)))
-
-;; org-bullets
-(use-package org-bullets
-  :ensure t
-  :commands org-bullets-mode
-  :init
-  (add-hook 'org-mode-hook #'org-bullets-mode))
 
 (setq ns-use-srgb-colorspace t)
 
