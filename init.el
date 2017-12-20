@@ -365,6 +365,10 @@ comint-replace-by-expanded-history-before-point."
 
 (setq ns-use-srgb-colorspace t)
 
+;; Open urls in Google Chrome
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
 ;; Fonts
 ;; -----
 (defun my/setup-osx-fonts ()
