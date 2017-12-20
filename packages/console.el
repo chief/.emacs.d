@@ -2,7 +2,6 @@
 ;;; https://github.com/purcell/exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t
-  :defer t
   :config
   (progn
     (setq exec-path-from-shell-variables '("JAVA_HOME"
