@@ -248,3 +248,8 @@
   (setq web-mode-css-indent-offset 2)
   ;; Script/code offset indentation
   (setq web-mode-code-indent-offset 2))
+
+;;; htmlize --- Convert buffer text and decorations to HTML.
+;;; https://github.com/hniksic/emacs-htmlize
+(use-package htmlize
+  :ensure t)
