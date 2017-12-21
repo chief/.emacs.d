@@ -430,6 +430,8 @@ comint-replace-by-expanded-history-before-point."
 
 (load "interface")
 
+(load "init-org")
+
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
 
