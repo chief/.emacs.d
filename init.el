@@ -136,7 +136,6 @@
 (when (window-system)
   (setq confirm-kill-emacs 'yes-or-no-p))
 
-
 ;; Fix some weird color escape sequences
 (setq system-uses-terminfo nil)
 
@@ -149,7 +148,6 @@
 
 ;; Rescan for imenu changes
 (set-default 'imenu-auto-rescan t)
-
 
 ;; Switch to unified diffs
 (setq diff-switches "-u")
@@ -283,7 +281,6 @@ When using Homebrew, install it using \"brew install trash\"."
 (defun set-scroll-conservatively ()
   "Add to shell-mode-hook to prevent jump-scrolling on newlines in shell buffers."
   (set (make-local-variable 'scroll-conservatively) 10))
-
 
 (global-set-key (kbd "<mouse-4>") 'previous-line)
 (global-set-key (kbd "<mouse-5>") 'next-line)
