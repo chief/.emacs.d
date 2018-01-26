@@ -98,7 +98,7 @@
 
 (setq-default tab-width 2)
 
-(setq auto-save-default nil)
+(setq auto-save-default t)
 
 ;;
 ;; Editor settings
