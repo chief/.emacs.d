@@ -98,6 +98,8 @@
 
 (setq-default tab-width 2)
 
+(setq auto-save-default nil)
+
 ;;
 ;; Editor settings
 ;;
@@ -228,18 +230,6 @@ When using Homebrew, install it using \"brew install trash\"."
       savehist-file "~/.emacs.d/savehist")
 (savehist-mode t)
 (setq-default save-place t)
-
-;; Delete auto-save files
-(setq delete-auto-save-files t)
-
-;; Change backup directory --- https://www.emacswiki.org/emacs/AutoSave
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
-(setq auto-save-visited-file-name t)
 
 ;; Delete old backups silently
 (setq delete-old-versions t)
