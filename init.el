@@ -69,6 +69,7 @@
 (setq font-lock-support-mode 'jit-lock-mode
       jit-lock-stealth-time 16
       jit-lock-defer-contextually t
+      jit-lock-defer-time 0.05
       jit-lock-stealth-nice 0.5)
 (setq-default font-lock-multiline t)
 
