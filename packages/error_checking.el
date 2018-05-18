@@ -5,7 +5,7 @@
   :bind (("M-g M-n" . flycheck-next-error)
          ("M-g M-p" . flycheck-previous-error)
          ("M-g M-=" . flycheck-list-errors))
-  :init (global-flycheck-mode)
+  ;; :init (global-flycheck-mode)
   :diminish flycheck-mode
   :config
   (progn
