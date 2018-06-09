@@ -69,7 +69,6 @@
 ;;; https://indium.readthedocs.io/en/latest/setup.html
 (use-package indium
   :ensure t
-  :defer t
   :init
   (add-hook 'js-mode-hook 'indium-interaction-mode))
 

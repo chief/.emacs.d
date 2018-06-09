@@ -261,6 +261,11 @@ When using Homebrew, install it using \"brew install trash\"."
  '(custom-safe-themes
    (quote
     ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+ '(electric-layout-mode nil)
+ '(electric-pair-mode nil)
+ '(electric-pair-open-newline-between-pairs nil)
+ '(js2-bounce-indent-p nil)
+ '(js2-missing-semi-one-line-override t)
  '(package-selected-packages
    (quote
     (diminish htmlize god-mode yard-mode cider indium paradox rjsx-mode gitignore-mode wisi helm-dash company-tern js2-refactor xref-js2 skewer-mode discover-my-major all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package)))
@@ -435,25 +440,26 @@ comint-replace-by-expanded-history-before-point."
 ;; --------------
 
 ;; Automatically instert pairs of characters
-(electric-pair-mode 1)
+(electric-pair-mode nil)
 (setq electric-pair-preserve-balance t
       electric-pair-delete-adjacent-pairs t
       electric-pair-open-newline-between-pairs nil)
 
 ;; Auto-indentation
-(electric-indent-mode 1)
+(electric-indent-mode nil)
 
 ;; Ignore electric indentation for python and yaml
 (defun electric-indent-ignore-mode (char)
   "Ignore electric indentation for python-mode"
   (if (or (equal major-mode 'python-mode)
-          (equal major-mode 'yaml-mode))
+          (equal major-mode 'yaml-mode)
+          (equal major-mode 'js2-mode))
       'no-indent
     nil))
 (add-hook 'electric-indent-functions 'electric-indent-ignore-mode)
 
 ;; Automatic layout
-(electric-layout-mode 1)
+(electric-layout-mode nil)
 
 ;; smart-tab
 ;; ---------
