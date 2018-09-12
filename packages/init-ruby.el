@@ -105,3 +105,10 @@
    (add-hook 'yaml-mode-hook
       '(lambda ()
         (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
+;;; projectile-rails --- Emacs Rails mode based on projectile
+;;; https://github.com/asok/projectile-rails
+(use-package projectile-rails
+  :ensure t
+  :config
+  (projectile-rails-global-mode))
