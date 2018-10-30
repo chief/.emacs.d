@@ -71,6 +71,7 @@
 
 
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-set-key (kbd "s-p") 'helm-projectile-find-file)
   (global-unset-key (kbd "C-x c"))
 
   (setq
