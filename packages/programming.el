@@ -252,3 +252,10 @@
 ;;; https://github.com/hniksic/emacs-htmlize
 (use-package htmlize
   :ensure t)
+
+;;; deadgrep --- fast, friendly searching with ripgrep and Emacs
+;;; https://github.com/Wilfred/deadgrep
+(use-package deadgrep
+  :ensure t
+  :init
+  (global-set-key (kbd "<f5>") #'deadgrep))
