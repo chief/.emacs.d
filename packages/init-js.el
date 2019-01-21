@@ -22,8 +22,15 @@
   :mode "\\.js\\'"
   :config
   (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+  (add-hook 'js2-mode-hook (lambda () (electric-indent-local-mode -1)))
+  (add-hook 'js2-mode-hook (lambda () (electric-indent-mode -1)))
+  (add-hook 'js2-mode-hook (lambda () (electric-layout-mode -1)))
   (setq-default js-indent-level 2)
-  (setq-default js-auto-indent-flag nil))
+  (setq-default js-auto-indent-flag nil)
+  (setq-default js2-mode-show-parse-errors nil)
+  (setq-default js2-mode-show-strict-warnings nil)
+  (setq-default js2-strict-missing-semi-warning nil)
+  (setq-default js2-autoinsert-semi-and-warn nil))
 
 (use-package skewer-mode
   :ensure t
