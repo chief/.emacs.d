@@ -441,7 +441,7 @@ comint-replace-by-expanded-history-before-point."
 ;; electric modes
 ;; --------------
 
-;; Automatically instert pairs of characters
+;; Automatically insert pairs of characters
 (electric-pair-mode nil)
 (setq electric-pair-preserve-balance t
       electric-pair-delete-adjacent-pairs t
