@@ -461,7 +461,7 @@ comint-replace-by-expanded-history-before-point."
 (add-hook 'electric-indent-functions 'electric-indent-ignore-mode)
 
 ;; Automatic layout
-(electric-layout-mode nil)
+(electric-layout-mode 1)
 
 ;; smart-tab
 ;; ---------
