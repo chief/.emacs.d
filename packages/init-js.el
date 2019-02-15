@@ -74,18 +74,18 @@
 
 ;;; indium --- A JavaScript development environment for Emacs
 ;;; https://indium.readthedocs.io/en/latest/setup.html
-(use-package indium
-  :ensure t
-  :init
-  (add-hook 'js-mode-hook 'indium-interaction-mode))
+;; (use-package indium
+;;   :ensure t
+;;   :init
+;;   (add-hook 'js-mode-hook 'indium-interaction-mode))
 
-;;; rjsx-mode --- Emacs major modes for various Git configuration files
-;;; https://github.com/felipeochoa/rjsx-mode
-(use-package rjsx-mode
-  :ensure t
-  :mode "\\.jsx\\'"
-  :config
-  (add-to-list 'auto-mode-alist '("components\\/.*\\.jsx\\'" . rjsx-mode)))
+;; ;;; rjsx-mode --- Emacs major modes for various Git configuration files
+;; ;;; https://github.com/felipeochoa/rjsx-mode
+;; (use-package rjsx-mode
+;;   :ensure t
+;;   :mode "\\.jsx\\'"
+;;   :config
+;;   (add-to-list 'auto-mode-alist '("components\\/.*\\.jsx\\'" . rjsx-mode)))
 
 ;; References
 ;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
