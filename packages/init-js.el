@@ -23,6 +23,7 @@
   :config
   (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
   (add-hook 'js2-mode-hook (lambda () (electric-indent-local-mode -1)))
+  (add-hook 'js2-mode-hook (lambda () (electric-indent-mode -1)))
   (add-hook 'js2-mode-hook (lambda () (electric-layout-mode -1)))
   (setq-default js-indent-level 2)
   (setq-default js-auto-indent-flag nil)
@@ -37,18 +38,39 @@
   :init
   (add-hook 'js2-mode-hook 'skewer-mode))
 
-(use-package company-tern
-  :ensure t
-  :defer t
-  :init
-  ;; (add-to-list 'company-backends 'company-tern)
-  (add-hook 'js2-mode-hook (lambda () (tern-mode)))
 
-  :config
-  ;; Disable completion keybindings, as we use xref-js2 instead
-  (define-key tern-mode-keymap (kbd "M-.") nil)
-  (define-key tern-mode-keymap (kbd "M-,") nil)
-  )
+;;; xref-js2 --- Jump to references/definitions using ag & js2-mode's AST in Emacs
+;;; https://github.com/nicolaspetton/xref-js2
+;; (use-package xref-js2
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (add-hook 'js2-mode-hook (lambda ()
+;;                              (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+;;   )
+
+;; ;;; js2-refactor --- A JavaScript refactoring library for emacs
+;; ;;; https://github.com/magnars/js2-refactor.el
+;; (use-package js2-refactor
+;;   :ensure t
+;;   :init
+;;   (add-hook 'js2-mode-hook 'js2-refactor-mode)
+;;   :bind (:map js2-mode-map
+;;               ("C-k" . js2r-kill))
+;;   )
+
+;; (use-package company-tern
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   ;; (add-to-list 'company-backends 'company-tern)
+;;   (add-hook 'js2-mode-hook (lambda () (tern-mode)))
+
+;;   :config
+;;   ;; Disable completion keybindings, as we use xref-js2 instead
+;;   (define-key tern-mode-keymap (kbd "M-.") nil)
+;;   (define-key tern-mode-keymap (kbd "M-,") nil)
+;;   )
 
 ;;; indium --- A JavaScript development environment for Emacs
 ;;; https://indium.readthedocs.io/en/latest/setup.html
