@@ -41,51 +41,51 @@
 
 ;;; xref-js2 --- Jump to references/definitions using ag & js2-mode's AST in Emacs
 ;;; https://github.com/nicolaspetton/xref-js2
-;; (use-package xref-js2
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (add-hook 'js2-mode-hook (lambda ()
-;;                              (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
-;;   )
+(use-package xref-js2
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'js2-mode-hook (lambda ()
+                             (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+  )
 
-;; ;;; js2-refactor --- A JavaScript refactoring library for emacs
-;; ;;; https://github.com/magnars/js2-refactor.el
-;; (use-package js2-refactor
-;;   :ensure t
-;;   :init
-;;   (add-hook 'js2-mode-hook 'js2-refactor-mode)
-;;   :bind (:map js2-mode-map
-;;               ("C-k" . js2r-kill))
-;;   )
+;;; js2-refactor --- A JavaScript refactoring library for emacs
+;;; https://github.com/magnars/js2-refactor.el
+(use-package js2-refactor
+  :ensure t
+  :init
+  (add-hook 'js2-mode-hook 'js2-refactor-mode)
+  :bind (:map js2-mode-map
+              ("C-k" . js2r-kill))
+  )
 
-;; (use-package company-tern
-;;   :ensure t
-;;   :defer t
-;;   :init
-;;   ;; (add-to-list 'company-backends 'company-tern)
-;;   (add-hook 'js2-mode-hook (lambda () (tern-mode)))
+(use-package company-tern
+  :ensure t
+  :defer t
+  :init
+  ;; (add-to-list 'company-backends 'company-tern)
+  (add-hook 'js2-mode-hook (lambda () (tern-mode)))
 
-;;   :config
-;;   ;; Disable completion keybindings, as we use xref-js2 instead
-;;   (define-key tern-mode-keymap (kbd "M-.") nil)
-;;   (define-key tern-mode-keymap (kbd "M-,") nil)
-;;   )
+  :config
+  ;; Disable completion keybindings, as we use xref-js2 instead
+  (define-key tern-mode-keymap (kbd "M-.") nil)
+  (define-key tern-mode-keymap (kbd "M-,") nil)
+  )
 
 ;;; indium --- A JavaScript development environment for Emacs
 ;;; https://indium.readthedocs.io/en/latest/setup.html
-;; (use-package indium
-;;   :ensure t
-;;   :init
-;;   (add-hook 'js-mode-hook 'indium-interaction-mode))
+(use-package indium
+  :ensure t
+  :init
+  (add-hook 'js-mode-hook 'indium-interaction-mode))
 
-;; ;;; rjsx-mode --- Emacs major modes for various Git configuration files
-;; ;;; https://github.com/felipeochoa/rjsx-mode
-;; (use-package rjsx-mode
-;;   :ensure t
-;;   :mode "\\.jsx\\'"
-;;   :config
-;;   (add-to-list 'auto-mode-alist '("components\\/.*\\.jsx\\'" . rjsx-mode)))
+;;; rjsx-mode --- Emacs major modes for various Git configuration files
+;;; https://github.com/felipeochoa/rjsx-mode
+(use-package rjsx-mode
+  :ensure t
+  :mode "\\.jsx\\'"
+  :config
+  (add-to-list 'auto-mode-alist '("components\\/.*\\.jsx\\'" . rjsx-mode)))
 
 ;; References
 ;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
