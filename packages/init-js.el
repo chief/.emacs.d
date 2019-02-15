@@ -37,17 +37,6 @@
   :init
   (add-hook 'js2-mode-hook 'skewer-mode))
 
-
-;;; xref-js2 --- Jump to references/definitions using ag & js2-mode's AST in Emacs
-;;; https://github.com/nicolaspetton/xref-js2
-(use-package xref-js2
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'js2-mode-hook (lambda ()
-                             (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
-  )
-
 ;;; js2-refactor --- A JavaScript refactoring library for emacs
 ;;; https://github.com/magnars/js2-refactor.el
 (use-package js2-refactor
