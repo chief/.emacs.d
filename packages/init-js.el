@@ -37,16 +37,6 @@
   :init
   (add-hook 'js2-mode-hook 'skewer-mode))
 
-;;; js2-refactor --- A JavaScript refactoring library for emacs
-;;; https://github.com/magnars/js2-refactor.el
-(use-package js2-refactor
-  :ensure t
-  :init
-  (add-hook 'js2-mode-hook 'js2-refactor-mode)
-  :bind (:map js2-mode-map
-              ("C-k" . js2r-kill))
-  )
-
 (use-package company-tern
   :ensure t
   :defer t
