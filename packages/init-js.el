@@ -23,7 +23,6 @@
   :config
   (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
   (add-hook 'js2-mode-hook (lambda () (electric-indent-local-mode -1)))
-  (add-hook 'js2-mode-hook (lambda () (electric-indent-mode -1)))
   (add-hook 'js2-mode-hook (lambda () (electric-layout-mode -1)))
   (setq-default js-indent-level 2)
   (setq-default js-auto-indent-flag nil)

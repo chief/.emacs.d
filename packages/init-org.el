@@ -1,6 +1,3 @@
-;; Enable transient mode
-(transient-mark-mode t)
-
 (use-package org
   :ensure t
   :bind (("C-c l" . org-store-link)
