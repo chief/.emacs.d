@@ -58,9 +58,10 @@
   :init
   (setq rspec-autosave-buffer t)
   :config
-  (add-hook 'rspec-verify-method 'rspec--autosave-buffer-maybe))
+  (add-hook 'rspec-verify-method 'rspec--autosave-buffer-maybe)
+  :bind (("C-c v" . rspec-verify-single)))
 
-;;; inf-ruby --- provides a REPL buffer connected to a Ruby subprocess.
+;;; inf-ruby --- provides a REPL buffer connected to a Ruby subprocess.x
 ;;; https://github.com/nonsequitur/inf-ruby
 (use-package inf-ruby
   :ensure t
