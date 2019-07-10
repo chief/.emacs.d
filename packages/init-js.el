@@ -35,7 +35,9 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'js2-mode-hook 'skewer-mode))
+  (add-hook 'js2-mode-hook 'skewer-mode)
+  (add-hook 'css-mode-hook 'skewer-css-mode)
+  (add-hook 'html-mode-hook 'skewer-html-mode))
 
 
 ;;; xref-js2 --- Jump to references/definitions using ag & js2-mode's AST in Emacs
