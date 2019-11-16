@@ -251,6 +251,8 @@ When using Homebrew, install it using \"brew install trash\"."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(comint-completion-addsuffix t)
  '(comint-get-old-input (lambda nil "") t)
  '(comint-input-ignoredups t)
@@ -258,15 +260,56 @@ When using Homebrew, install it using \"brew install trash\"."
  '(comint-prompt-read-only nil)
  '(comint-scroll-show-maximum-output t)
  '(comint-scroll-to-bottom-on-input t)
+ '(compilation-message-face (quote default))
  '(custom-safe-themes
    (quote
-    ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+    ("a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+ '(fci-rule-color "#3C3D37")
+ '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-tail-colors
+   (quote
+    (("#3C3D37" . 0)
+     ("#679A01" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#3C3D37" . 100))))
  '(js2-bounce-indent-p nil)
  '(js2-missing-semi-one-line-override t)
+ '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (rust-mode magit-popup deadgrep alchemist elixir-mode projectile-rails diminish htmlize god-mode yard-mode cider indium paradox rjsx-mode gitignore-mode wisi helm-dash company-tern js2-refactor xref-js2 skewer-mode discover-my-major all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package)))
- '(paradox-github-token t))
+    (toml-mode rust-mode magit-popup deadgrep alchemist elixir-mode projectile-rails diminish htmlize god-mode yard-mode cider indium paradox rjsx-mode gitignore-mode wisi helm-dash company-tern js2-refactor xref-js2 skewer-mode discover-my-major all-the-icons hlinum monokai-theme zenburn-theme which-key crux dockerfile-mode eshell-prompt-extras git-timemachine git-gutter magit helm-flycheck helm-flx helm-swoop helm-ag helm-projectile helm web-mode yaml-mode markdown-mode+ markdown-mode es-mode geiser paredit elisp-slime-nav ruby-tools rubocop rspec-mode robe rbenv inf-ruby js2-mode json-mode coffee-mode ac-cider paren-face clojure-mode-extra-font-locking clojure-mode flycheck-pos-tip flycheck-tip flycheck dired+ org-bullets idle-highlight-mode restclient projectile imenu-anywhere vlf ido-vertical-mode smartscan iedit undo-tree shrink-whitespace smart-tab anzu fill-column-indicator golden-ratio flx-ido smooth-scrolling smartparens ido-completing-read+ ag smex popup company symon exec-path-from-shell rainbow-delimiters beacon smart-mode-line rainbow-mode better-defaults use-package)))
+ '(paradox-github-token t)
+ '(pos-tip-background-color "#FFFACE")
+ '(pos-tip-foreground-color "#272822")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#F92672")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#A6E22E")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#A1EFE4")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#66D9EF"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (quote
+    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))))
 
 (defun my/shell-kill-buffer-sentinel (process event)
   (when (memq (process-status process) '(exit signal))
@@ -433,6 +476,8 @@ comint-replace-by-expanded-history-before-point."
 (load "init-elixir")
 
 (load "init-rust")
+
+(load "init-scss")
 
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
