@@ -112,4 +112,5 @@
 (use-package projectile-rails
   :ensure t
   :config
-  (projectile-rails-global-mode))
+  ;;; (projectile-rails-global-mode)
+  )
