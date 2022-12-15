@@ -112,8 +112,12 @@
 ;;
 ;; Editor settings
 ;;
+(pixel-scroll-precision-mode 1)
 
-;; Turn off all kinds of modes
+(setq mouse-wheel-scroll-amount 1) ;; one line at a time
+
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
 (when (functionp 'mouse-wheel-mode)
   (mouse-wheel-mode -1))
 (when (functionp 'tooltip-mode)
@@ -225,12 +229,7 @@ When using Homebrew, install it using \"brew install trash\"."
     (call-process (executable-find "trash")
                   nil 0 nil
                   file))
-
-  ;; Trackpad scrolling
-  (global-set-key [wheel-up] 'previous-line)
-  (global-set-key [wheel-down] 'next-line)
-  (global-set-key [wheel-left] 'left-char)
-  (global-set-key [wheel-right] 'right-char))
+  )
 
 ;; Settings for temporary files
 (setq savehist-additional-variables
@@ -479,6 +478,10 @@ comint-replace-by-expanded-history-before-point."
 
 (load "init-scss")
 
+;; (load "init-roam")
+
+;; (load "init-lsp")
+
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
 
@@ -683,3 +686,6 @@ Deletes whitespace at join."
 (let ((elapsed (float-time (time-subtract (current-time)
                                           emacs-start-time))))
   (message "Loading emacs...done (%.3fs)" elapsed))
+
+;; Set undo tree folder to local emacs
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
