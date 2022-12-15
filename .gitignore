@@ -28,3 +28,8 @@ backups
 projectile.cache
 *.log
 transient/
+
+.lsp-session-v1
+.org-id-locations
+org-roam-db.bak
+org-roam.db
