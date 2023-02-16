@@ -40,9 +40,7 @@
 ;;; helm -- Emacs incremental completion and selection narrowing framework
 ;;; https://github.com/emacs-helm/helm
 (use-package helm
-  :ensure t)
-
-(use-package helm-config
+  :ensure t
   :diminish helm-mode
   :demand t
   :bind
@@ -70,48 +68,57 @@
   (use-package helm-ring)
 
 
+  (global-set-key (kbd "M-x") #'helm-M-x)
+  (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+  (global-set-key (kbd "C-x C-f") #'helm-find-files)
+
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-set-key (kbd "s-p") 'helm-projectile-find-file)
   (global-set-key (kbd "s-[") 'helm-projectile-ag)
   (global-unset-key (kbd "C-x c"))
 
-  (setq
-   ;; truncate long lines in helm completion
-   helm-truncate-lines t
+  (helm-mode 1)
 
-   ;; do not display invisible candidates
-   helm-quick-update t
+  ;; (setq
+  ;;  ;; truncate long lines in helm completion
+  ;;  helm-truncate-lines t
 
-   ;; open helm buffer inside current window, don't occupy whole other window
-   helm-split-window-in-side-p t
+  ;;  ;; do not display invisible candidates
+  ;;  helm-quick-update t
 
-   ;; move to end or beginning of source when reaching top or bottom
-   ;; of source
-   helm-move-to-line-cycle-in-source t
+  ;;  ;; open helm buffer inside current window, don't occupy whole other window
+  ;;  helm-split-window-in-side-p t
 
-   ;; fuzzy matching
-   helm-recentf-fuzzy-match t
-   helm-locate-fuzzy-match nil ;; locate fuzzy is worthless
-   helm-M-x-fuzzy-match t
-   helm-buffers-fuzzy-matching t
-   helm-semantic-fuzzy-match t
-   helm-imenu-fuzzy-match t
-   helm-completion-in-region-fuzzy-match t
-   )
+  ;;  ;; move to end or beginning of source when reaching top or bottom
+  ;;  ;; of source
+  ;;  helm-move-to-line-cycle-in-source t
 
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
-  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-  (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
+  ;;  ;; fuzzy matching
+  ;;  helm-recentf-fuzzy-match t
+  ;;  helm-locate-fuzzy-match nil ;; locate fuzzy is worthless
+  ;;  helm-M-x-fuzzy-match t
+  ;;  helm-buffers-fuzzy-matching t
+  ;;  helm-semantic-fuzzy-match t
+  ;;  helm-imenu-fuzzy-match t
+  ;;  helm-completion-in-region-fuzzy-match t
 
-  (when (executable-find "curl")
-    (setq helm-google-suggest-use-curl-p t))
 
-  ;; ggrep is gnu grep on OSX
-  (when (executable-find "ggrep")
-    (setq helm-grep-default-command
-          "ggrep -a -d skip %e -n%cH -e %p %f"
-          helm-grep-default-recurse-command
-          "ggrep -a -d recurse %e -n%cH -e %p %f")))
+  ;;  ;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+  ;;  ;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+  ;;  (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
+
+  ;;  ;; (when (executable-find "curl")
+  ;;  ;;   (setq helm-google-suggest-use-curl-p t))
+
+  ;;  ;; ggrep is gnu grep on OSX
+
+  ;;  ;; (when (executable-find "ggrep")
+  ;;  ;;   (setq helm-grep-default-command
+  ;;  ;;         "ggrep -a -d skip %e -n%cH -e %p %f"
+  ;;  ;;         helm-grep-default-recurse-command
+  ;;  ;;         "ggrep -a -d recurse %e -n%cH -e %p %f")))
+  ;; )
+  )
 
 ;;; god-mode --- Global minor mode for entering Emacs commands without modifier keys
 ;;; https://github.com/chrisdone/god-mode
