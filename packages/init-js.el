@@ -54,3 +54,7 @@
 ;; References
 ;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
 ;; https://emacs.cafe/emacs/javascript/setup/2017/05/09/emacs-setup-javascript-2.html
+
+(setq-default js-indent-level 2)
+
+(setq-default js-auto-insert-semi nil)
