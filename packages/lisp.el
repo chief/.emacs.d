@@ -58,10 +58,10 @@
 
 ;;; paren-face --- A face dedicated to lisp parentheses
 ;;; https://github.com/tarsius/paren-face
-(use-package paren-face
-  :ensure t
-  :defer t
-  :init (global-paren-face-mode))
+;; (use-package paren-face
+;;   :ensure t
+;;   :defer t
+;;   :init (global-paren-face-mode))
 
 ;;; clojure-mode --- Emacs support for the Clojure(Script) programming language
 ;;; https://github.com/clojure-emacs/clojure-mode

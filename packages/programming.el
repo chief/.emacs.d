@@ -164,13 +164,13 @@
 
 ;;; with-editor --- Use the Emacsclient as the $EDITOR of child processes
 ;;; https://github.com/magit/with-editor
-(use-package with-editor
-  :ensure t
-  :init
-  (progn
-    (add-hook 'shell-mode-hook 'with-editor-export-editor)
-    (add-hook 'eshell-mode-hook 'with-editor-export-editor)
-    (add-hook 'term-mode-hook 'with-editor-export-editor)))
+;; (use-package with-editor
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (add-hook 'shell-mode-hook 'with-editor-export-editor)
+;;     (add-hook 'eshell-mode-hook 'with-editor-export-editor)
+;;     (add-hook 'term-mode-hook 'with-editor-export-editor)))
 
 ;;; dockerfile-mode --- An emacs mode for handling Dockerfiles
 ;;; https://github.com/spotify/dockerfile-mode
